@@ -1,3 +1,5 @@
+// === 버튼 스타일 === //
+
 @mixin wide-button {
   margin: 40px auto 20px;
   width: 100%;
@@ -9,6 +11,7 @@
   font-weight: 700;
   cursor: pointer;
 }
+// 등록하기, 모달 닫기 버튼
 @mixin small-button {
   width: 100%;
   height: 50px;
@@ -18,6 +21,30 @@
   color: $white-color;
   font-weight: 800;
   font-size: 18px;
+  cursor: pointer;
+}
+
+@mixin middle-button {
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background-color: $main-color;
+  color: $white-color;
+  font-weight: 800;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+@mixin middle-button-outline {
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  border: 2px solid $main-color; 
+  background-color: $white-color;
+  color: $main-color;
+  font-weight: 800;
+  font-size: 16px;
   cursor: pointer;
 }
 
@@ -39,6 +66,18 @@
   cursor: auto;
 }
 
+// === 에러 메세지 === //
+
+@mixin error-message {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 400;
+  color: $point-color;
+  margin-left: 10px;
+}
+
+// === 인풋 스타일 === //
+
 @mixin wide-input {
   width: 100%;
   font-size: 14px;
@@ -50,14 +89,6 @@
     font-size: 14px;
     color: $sub-color;
   }
-}
-
-@mixin error-message {
-  margin-top: 10px;
-  font-size: 12px;
-  font-weight: 400;
-  color: $point-color;
-  margin-left: 10px;
 }
 
 @mixin select-wide-input {
@@ -100,6 +131,8 @@
   color: $green-BG-color;
 }
 
+// === 체크 박스 스타일 === //
+
 @mixin custom-checkbox(
   $border-color,
   $bg-color,
@@ -109,8 +142,8 @@
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   border: 2px solid $border-color;
   background-color: $bg-color;
   border-radius: 6px;
@@ -128,7 +161,7 @@
     position: absolute;
     left: 28%;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
   }
   &:checked {
     background-color: $checked-bg-color;
@@ -137,6 +170,8 @@
     }
   }
 }
+
+// === 카테고리 태그 스타일 === //
 
 @mixin tags($bg-color, $main-color) {
   margin: 0 5px;

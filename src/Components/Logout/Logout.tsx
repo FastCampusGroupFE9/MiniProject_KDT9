@@ -1,5 +1,5 @@
 import { logOut } from "@/Api/apis";
-import { useCookies } from "react-cookie";
+import { Cookies, useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
 const Logout = () => {

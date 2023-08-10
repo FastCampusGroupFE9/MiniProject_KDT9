@@ -32,8 +32,6 @@ const EventModal: React.FC<EventModalProps> = ({
   const isDutyCategory = category === "당직";
   const isAnnualLeaveCategory = category === "연차";
 
-  console.log(event);
-
   const formatDate = (date: Date) => {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;

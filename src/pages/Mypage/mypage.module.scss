@@ -4,7 +4,7 @@
   top: 0;
   padding-top: 100px;
   width: 100%;
-  height: 125vh;
+  height: 140vh;
   font-size: 14px;
   font-weight: 600;
   font-family: "Montserrat", "Noto Sans KR", sans-serif;
@@ -13,7 +13,7 @@
     margin: auto;
     position: relative;
     width: 1080px;
-    height: 830px;
+    height: 950px;
     border-radius: 40px;
     background-color: $white-color;
     box-shadow: 5px 5px 20px $main-color-30;
@@ -21,10 +21,11 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    .inner_box {
+    .list_box {
+      position: absolute;
       width: 90%;
       height: 75%;
-      margin-bottom: 30px;
+      margin-top: 170px;
       display: flex;
       flex-direction: column;
       align-items: left;
@@ -37,7 +38,7 @@
       .duty {
         width: 100%;
         height: 40%;
-        margin-top: 60px;
+        margin-top: 95px;
       }
       .title {
         font-size: 16px;
@@ -45,6 +46,19 @@
         &:last-child {
           margin-top: 50px;
         }
+      }
+    }
+    .profile_box {
+      width: 90%;
+      height: 55%;
+      margin-bottom: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      .title {
+        text-align: center;
+        font-size: 22px;
+        font-weight: 800;
       }
     }
   }

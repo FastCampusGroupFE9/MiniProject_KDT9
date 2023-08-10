@@ -14,7 +14,11 @@
   font-size: 14px;
   font-weight: 400;
   background-color: $light-Grey-color;
-  cursor: default;
+    &:hover {
+    font-weight: 400;
+    cursor: pointer;
+    background-color: $black-color-30;
+  }
   .list_option {
     width: 89%;
     margin-left: 15px;

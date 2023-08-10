@@ -30,10 +30,10 @@ export default function DutyList(props:{myData?:MyDataType}) {
             onClick={() => handleClick(dutyItem.id)}
             key={index}
             className={styles.lists}>
-            <div className={styles.list}>당직</div> 
-            <div className={styles.list}>{dutyItem.title}</div>
-            <div className={styles.list}>{dutyItem.startDate}</div>
-            <div className={styles.list}>{dutyItem.status}</div>
+            <div>당직</div> 
+            <div>{dutyItem.title}</div>
+            <div>{dutyItem.startDate}</div>
+            <div>{dutyItem.status}</div>
             <DutyModal id={id} duty={duty} visivility={visivility} setVisivility={setVisivility} />
           </div>
         ))}

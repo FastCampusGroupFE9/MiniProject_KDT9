@@ -124,6 +124,7 @@ const AddEventModal: React.FC<AddEventModalProps> = ({
                 type="checkbox"
                 name="category"
                 value="연차"
+                className="input_dayoff_checkbox"
                 checked={newEvent.category === "연차"}
                 onChange={handleCategoryChange}
               />
@@ -134,6 +135,7 @@ const AddEventModal: React.FC<AddEventModalProps> = ({
                 type="checkbox"
                 name="category"
                 value="당직"
+                className="input_duty_checkbox"
                 checked={newEvent.category === "당직"}
                 onChange={handleCategoryChange}
               />
@@ -145,12 +147,11 @@ const AddEventModal: React.FC<AddEventModalProps> = ({
           <label className="add_title">사유</label>
           <select name="select-reason" id="reason" onChange={handleInputChange}>
             {newEvent.category === "당직" && (
-              <option value="기타휴가">========== 당직 ==========</option>
+              <option value="기타휴가">============= 당직 =============</option>
             )}
-
             {newEvent.category === "연차" && (
               <>
-                <option value="">========== 선택하세요 ==========</option>
+                <option value="">========== 선택하세요 ===========</option>
                 <option value="연차유급휴가">연차 유급 휴가</option>
                 <option value="병가휴가">병가 휴가</option>
                 <option value="경조사휴가">경조사 휴가</option>
@@ -158,11 +159,17 @@ const AddEventModal: React.FC<AddEventModalProps> = ({
                 <option value="기타휴가">기타 휴가</option>
               </>
             )}
+                <option value="출산휴가">출산 전휴 휴가</option>
+                <option value="기타휴가">기타 휴가</option>
           </select>
         </div>
-        <div className="btn_group">
-          <button onClick={closeModal}>닫기</button>
-          <button onClick={handleSubmit}>등록</button>
+        <div className="btn_wrap">
+          <button className="close_btn" onClick={closeModal}>
+            닫기
+          </button>
+          <button className="submit_btn" onClick={handleSubmit}>
+            등록
+          </button>
         </div>
       </div>
     </Modal>

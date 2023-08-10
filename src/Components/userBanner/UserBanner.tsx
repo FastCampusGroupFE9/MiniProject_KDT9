@@ -1,15 +1,27 @@
 import styles from "./userBanner.module.scss";
-export default function UserBanner(props:{myData:MyDataType|undefined; setCategory:(value:boolean)=>void}) {
+export default function UserBanner(props: {
+  myData: MyDataType | undefined;
+  category: boolean;
+  setCategory: (value: boolean) => void;
+}) {
   const myData = props.myData;
 
   return (
     <div className={styles.container}>
       <div className={styles.my_menu}>
-        <span onClick={()=> props.setCategory(false)}>상신 내역</span>
+        <span
+          onClick={() => props.setCategory(false)}
+          className={props.category ? styles.active : ""}
+        >
+          상신 내역
+        </span>
         <span className={styles.bar}>|</span>
         <span
-          onClick={()=> props.setCategory(true)}
-          className={styles.my_profile}>개인정보 수정</span>
+          onClick={() => props.setCategory(true)}
+          className={props.category ? "" : styles.active}
+        >
+          개인정보 수정
+        </span>
       </div>
       <div className={styles.banner}>
         <div className={`${styles.banner_box} ${styles.annual_info}`}>

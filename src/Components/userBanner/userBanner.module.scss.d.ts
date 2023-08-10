@@ -2,7 +2,7 @@ declare const classNames: {
   readonly container: "container";
   readonly my_menu: "my_menu";
   readonly bar: "bar";
-  readonly my_profile: "my_profile";
+  readonly active: "active";
   readonly banner: "banner";
   readonly banner_box: "banner_box";
   readonly total_num: "total_num";

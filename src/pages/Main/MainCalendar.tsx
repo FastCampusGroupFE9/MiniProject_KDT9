@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { useState, useEffect } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -23,38 +23,49 @@ const MainCalendar = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [userName, setUserName] = useState("");
   const [processedEvents, setProcessedEvents] = useState([]);
-  const [role, setRole] = useState<string|null>(null);
+  const [role, setRole] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchMainInfo = async () => {
       try {
-        const ACCESSTOKEN = getAccessToken();
+        const ACCESSTOKEN: string | undefined = getAccessToken();
+
         const mainInfo = await getMainPage(ACCESSTOKEN ?? "");
+        
 
         if (mainInfo?.data.annuals && Array.isArray(mainInfo.data.annuals)) {
           const processedEvents = mainInfo.data.annuals.map((annuals: any) => {
-            const { startDate, endDate, ...rest } = annuals;
+            const { ...rest } = annuals;
+            const startTime = new Date(annuals.startDate); // 시작 시간을 Date 객체로 변환
+            const endTime = new Date(annuals.endDate); // 종료 시간을 Date 객체로 변환.
+
+            
+            if (startTime.toISOString() === endTime.toISOString()) {
+              endTime.setHours(23, 59, 59); // 해당 날짜의 마지막 시간으로 설정
+            }
+        
             return {
               ...rest,
-              start: startDate,
-              end: endDate,
+              start: startTime,
+              end: endTime,
               color: annuals.category === "연차" ? "#FEEFEC" : "#EEF6F1",
               textColor: annuals.category === "연차" ? "#EA613C" : "#3ACAB9",
               title: `• ${annuals.name}`,
               detail: annuals.title,
             };
           });
-
+        
           setEvents(mainInfo.data.annuals);
           setProcessedEvents(processedEvents);
           setUserName(mainInfo.data.username);
           const ROLE = localStorage.getItem("role");
-          setRole(ROLE);
+          setRole(ROLE ?? null);
+  
         }
       } catch (error) {
         console.error("메인페이지 컴포넌트 에러: ", error);
-        const ACCESSTOKEN = getAccessToken();
-        const silentAxios = getSilentAxios(ACCESSTOKEN);
+        const ACCESSTOKEN: string | undefined = getAccessToken();
+        const silentAxios = getSilentAxios(ACCESSTOKEN ?? "");
         const result = await silentAxios.get("/main");
         return result.data;
       }
@@ -76,34 +87,24 @@ const MainCalendar = () => {
     }
   };
 
-  const handleAllEventsToggle = () => {
-    setIsAllEventsChecked(!isAllEventsChecked);
-    setSelectedCategories(isAllEventsChecked ? [] : ["all"]);
-  };
-  useEffect(() => {
-    if (isAllEventsChecked) {
-      setSelectedCategories(["all", "연차", "당직"]);
-    } else {
-      setSelectedCategories([]);
-    }
-  }, [isAllEventsChecked]);
-
   // 카테고리 선택 버튼 클릭 시
   const handleCategoryChange = (category: string) => {
-    if (selectedCategories.includes(category)) {
-      setSelectedCategories(selectedCategories.filter((c) => c !== category));
-    } else {
-      setSelectedCategories([...selectedCategories, category]);
+    if (category !== "all") {
+      const updatedCategories = selectedCategories.includes(category)
+        ? selectedCategories.filter((c) => c !== category)
+        : [...selectedCategories, category];
+      
+      setSelectedCategories(updatedCategories);
+
     }
   };
 
   // 선택된 카테고리에 따라 이벤트 필터링
-  const filteredEvents = selectedCategories.includes("all")
-    ? processedEvents // 모든 이벤트를 표시
-    : processedEvents.filter((event: { category: string }) =>
-        selectedCategories.includes(event.category),
-      );
-
+  const filteredEvents = selectedCategories.length === 0
+  ? [] // 빈 배열을 할당하여 아무 이벤트도 표시하지 않도록 설정
+  : processedEvents.filter((event: { category: string }) =>
+      selectedCategories.includes(event.category),
+    );
   // 연차 리스트 개수
   const selectedAnnualLeave = events.filter(
     (event: any) => event.category === "연차",
@@ -132,6 +133,26 @@ const MainCalendar = () => {
   const handleEventClick = (eventInfo: any) => {
     setSelectedEvent(eventInfo.event); // 수정된 부분
   };
+
+  const handleAllEventsToggle = () => {
+    const newValue = !isAllEventsChecked;
+    setIsAllEventsChecked(newValue);
+  
+    if (!newValue) {
+      setSelectedCategories([]);
+    }
+  };
+  
+
+
+  useEffect(() => {
+    if (isAllEventsChecked) {
+      setSelectedCategories(["연차", "당직"]);
+    } else {
+      setSelectedCategories([]);
+    }
+  }, [isAllEventsChecked]);
+
 
   return (
     <div className="main_page">
@@ -167,7 +188,7 @@ const MainCalendar = () => {
               {" "}
               {/* 오늘 날짜 렌더링 */}
               <h1 className="sub_title">Today</h1>
-              <span className="today_weather">{formattedDate}</span>
+              <span className="today_date">{formattedDate}</span>
             </div>
             <div className="select_calendar">
               <h1 className="sub_title">Calendar</h1>
@@ -225,8 +246,9 @@ const MainCalendar = () => {
           </div>
           <AddEventModal
             isOpen={isAddModalOpen}
-            closeModal={() => setIsAddModalOpen(false)}
-          />
+            closeModal={() => setIsAddModalOpen(false)} handleAddEvent={function (): void {
+              throw new Error("Function not implemented.");
+            } }          />
         </div>
         <div className="calendar_wrap">
           <FullCalendar

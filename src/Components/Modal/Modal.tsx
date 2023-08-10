@@ -7,6 +7,7 @@ interface ModalProps {
 }
 
 export default function Modal(props: PropsWithChildren<ModalProps>) {
+
   return (
     <div
       className="modal-overlay"

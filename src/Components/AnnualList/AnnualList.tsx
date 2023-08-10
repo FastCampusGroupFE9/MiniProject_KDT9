@@ -35,18 +35,20 @@ export default function AnnualList(props: { myData?: MyDataType }) {
             key={index}
             className={styles.lists}
           >
-            <div className={styles.list}>{annual.reason}</div>
-            <div className={styles.list}>{annual.title}</div>
-            <div className={styles.list}>
+            <div>{annual.reason}</div>
+            <div>{annual.title}</div>
+            <div>
               <span>{dayjs(annual.startDate).format("YYYY/MM/DD")}</span>~
               <span>{dayjs(annual.endDate).format("YYYY/MM/DD")}</span>
             </div>
-            <div className={styles.list}>{DateCount({
-              startDate: annual.startDate,
-              endDate: annual.endDate
-            })} 개
+            <div>
+              {DateCount({
+                startDate: annual.startDate,
+                endDate: annual.endDate,
+              })}{" "}
+              개
             </div>
-            <p className={styles.list}>{annual.status}</p>
+            <p>{annual.status}</p>
             <AnnualModal id={id} annual={annualData} visivility={visivility} setVisivility={setVisivility} />
           </div>
         ))}
@@ -54,5 +56,3 @@ export default function AnnualList(props: { myData?: MyDataType }) {
     </div>
   );
 }
-
-

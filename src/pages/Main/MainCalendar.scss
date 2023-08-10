@@ -14,7 +14,7 @@
     display: flex;
     border-radius: 24px;
     background-color: $light-Green-BG-color;
-    box-shadow: 4px 4px 30px rgba($color: $main-color, $alpha: 0.3);
+    box-shadow: 4px 4px 30px $main-color-30;
     .info_wrap {
       margin: auto;
       margin-left: 50px;
@@ -24,10 +24,9 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: start;
-      font-size: 18px;
+      font-size: 16px;
       font-family: "Montserrat", "Noto Sans KR", sans-serif;
       .UserInfo {
-        // position: absolute;
         width: 215px;
         height: 50px;
         line-height: 1.2;
@@ -93,9 +92,10 @@
         }
         .select_today {
           width: 220px;
-          .today_weather {
+          .today_date {
             color: $main-color;
             font-weight: 500;
+            padding-left: 3px;
           }
         }
         .select_calendar {
@@ -115,7 +115,7 @@
             display: flex;
             flex-direction: column;
             font-size: 16px;
-            font-weight: 800;
+            font-weight: 600;
             font-family: "noto-sans";
             .select_calendar_option {
               height: 30px;
@@ -145,21 +145,17 @@
             top: -28px;
           }
           .select_category_options {
-            display: flex;
             height: 65px;
+            display: flex;
             flex-direction: column;
-            justify-content: space-between;
             font-size: 16px;
-            font-weight: 800;
+            font-weight: 600;
             font-family: "noto-sans", sans-serif;
             .select_category_option {
-              position: relative;
               height: 30px;
               display: flex;
               align-items: center;
-              text-align: left;
               .input_dayoff_checkbox {
-                position: absolute;
                 @include custom-checkbox(
                   transparent,
                   $point-color-50,
@@ -194,7 +190,7 @@
           transition: box-shadow 0.3s ease-in-out;
           i {
             margin-left: 10px;
-            transition: rotate 0.3s ease-in-out;
+            transition: rotate 0.2s ease-in-out;
           }
           &:hover {
             box-shadow: 4px 4px 20px $point-color-50;
@@ -218,6 +214,7 @@
   font-size: 14px;
   font-weight: bold;
 }
+
 .fc .fc-toolbar {
   margin: 0 auto;
   margin-top: 50px;
@@ -225,6 +222,10 @@
 
 .fc-toolbar-title {
   padding: 0 20px;
+}
+
+.fc-event-time{
+  display: none;
 }
 
 .fc-view-harness-active {
@@ -239,21 +240,60 @@
   border-radius: 2px;
 }
 
+
+.fc-daygrid-event-harness{
+  :hover{
+    background-color: black;
+    cursor: pointer;
+  }
+}
+
+// 당일 하루 이벤트 
+.fc-event.fc-event-start.fc-event-end.fc-daygrid-event.fc-daygrid-dot-event.fc-daygrid-event{
+  color: rgb(58, 202, 185);
+  border-color: rgb(238, 246, 241);
+  background-color: rgb(238, 246, 241);
+  font-size: 14px;
+  padding: 2px;
+  font-weight: bold;
+
+  :hover{
+    background-color: black;
+    cursor: pointer;
+  }
+
+
+  .fc-event-title{
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+
+.fc-daygrid-event-dot {
+  display: none;
+}
+
 .fc-dayGridMonth-view .fc-view .fc-daygrid {
   z-index: 10;
 }
+
 .fc-view-harness .fc-view-harness-active {
   z-index: 10;
 }
+
 .fc .fc-button-primary {
   background-color: $white-green;
   border: none;
   color: $sub-color;
 }
+
 .fc .fc-toolbar-title {
   font-size: 36px;
   font-weight: bold;
 }
+
 .fc-col-header-cell-cushion {
   text-transform: uppercase;
   font-size: 16px;
@@ -261,12 +301,15 @@
   font-family: "Montserrat";
   color: $sub-color;
 }
+
 .fc .fc-daygrid-day-top {
   flex-direction: row;
 }
+
 .fc-scrollgrid-sync-inner {
   padding-bottom: 10px;
 }
+
 .fc-theme-standard td,
 .fc-theme-standard th {
   border: none;
@@ -274,23 +317,28 @@
     border-top: 1px solid $sub-color;
   }
 }
+
 .fc-scrollgrid.fc-scrollgrid-liquid {
   border: none;
   border-bottom: 3px solid $sub-color;
 }
+
 .fc-col-header-cell.fc-day {
   border-bottom: 3px solid $sub-color;
 }
+
 .fc .fc-daygrid-day-number {
   font-size: 16px;
   font-weight: bold;
   font-family: "Montserrat", sans-serif;
   padding: 10px;
 }
+
 .fc .fc-day-other .fc-daygrid-day-top {
   color: $green-BG-color;
   opacity: 1;
 }
+
 .fc-daygrid-day-frame {
   border-left: 1px solid $green-BG-color;
 }
@@ -302,6 +350,7 @@
 .fc-day-sat {
   color: $date-color-blue;
 }
+
 .fc-day-sun {
   color: $point-color;
 }

@@ -8,7 +8,7 @@ const AccessForbidden = () => {
       <div className="guide_wrap">
         <div className="main_text">접근이 제한된 서비스입니다.</div>
         <div className="sub_text">
-          아래의 버튼을 클릭하시면 로그인 페이지로 이동합니다.
+          로그인 후 다시 이용해 주세요.
         </div>
         <button className="nav_btn" onClick={() => navigate("/")}>
           <span className="text">로그인 페이지</span>로 이동
@@ -16,7 +16,9 @@ const AccessForbidden = () => {
         </button>
       </div>
       <div className="bg_circle">
-        <span className="bg_text">ㅠ_ㅠ</span>
+        <div className="bg_text">
+          ⎞ <span>ㅠ_ㅠ</span> ⎛
+        </div>
       </div>
     </div>
   );

@@ -1,12 +1,11 @@
 @import "src/_variables.scss";
 
 .Container {
-  width: 100%;
-  height: 100%;
-  // background-color: blue;
+  width: 99%;
+  height: 99%;
   .index {
     width: 100%;
-    height: 46px;
+    height: 36px;
     margin-top: 10px;
     padding: 0px 40px;
     border-radius: 13px;
@@ -21,7 +20,7 @@
     }
   }
   .lists_content {
-    height: 100%;
+    height: 90%;
     width: 100%;
     margin-top: 10px;
     overflow-y: scroll;
@@ -30,31 +29,39 @@
     }
     &::-webkit-scrollbar-thumb {
       height: 5px; /* 스크롤바의 길이 */
-      background: $light-Green-BG-color; /* 스크롤바의 색상 */
+      background-color: $light-Green-BG-color; /* 스크롤바의 색상 */
       border-radius: 10px;
     }
     .lists {
-      width: 100%;
+      width: 98%;
       height: 38px;
-      padding: 5px 40px;
+      margin-top: 5px;
+      margin-left: 10px;
+      padding: 5px 30px 5px 30px;
       display: grid;
       grid-template-columns: 0.5fr 2fr 1.5fr 0.5fr 0.5fr;
       align-items: center;
       text-align: center;
-      font-weight: 300;
+      font-weight: 400;
       color: $black-color;
+      background-color: $light-Grey-color;
       &:hover {
         cursor: pointer;
-      }
-      .list {
-        padding: 5px 0px;
-        &::before {
-          content: "|";
-          float: left;
-          color: $sub-color;
-        }
+        background-color: $black-color-30;
       }
     }
   }
 }
-
+.modal-content {
+  text-align: center; /* 텍스트 가운데 정렬 */
+  color: $main-color; /* 원하는 텍스트 색상으로 변경 */
+  margin-bottom: 20px; /* 하단 여백 추가 */
+  .modal-title {
+    font-size: 24px; /* 제목 폰트 크기 조정 */
+    font-weight: 700; /* 제목 폰트 두께 조정 */
+    margin-bottom: 10px; /* 제목 아래 여백 추가 */
+  }
+  .modal-text {
+    font-size: 18px; /* 내용 폰트 크기 조정 */
+  }
+}

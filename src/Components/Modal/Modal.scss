@@ -1,5 +1,5 @@
-@import "/src/mixin";
 @import "/src/variables";
+@import "src/_mixin.scss";
 
 .modal-overlay {
   position: fixed;
@@ -10,38 +10,32 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 9999;
+  background-color: $main-color-30;
+  z-index: 99;
 }
 
 .modal-window {
   width: 80%; /* 모달의 최대 너비 조정 */
   max-width: 500px; /* 모달의 최대 너비 제한 */
-  background-color: #fff;
-  border-radius: 12px;
+  height: 300px;
+  background-color: $white-color;
+  border-radius: 30px;
   overflow: hidden;
   padding: 20px; /* 모달 내부 컨텐츠 주변 여백 조정 */
   font-size: 16px; /* 폰트 크기 조정 */
   margin-top: 20px; /* 모달 컨텐츠 상단 여백 추가 */
   text-align: center; /* 내용을 가운데 정렬 */
-}
-
-.modal-close {
-  width: 164px;
-  height: 40px;
-  color: #000;
-  font-size: 18px;
-  transition: 0.1s;
-  background-color: var(--primary2);
-  margin: 10px auto 0;
-  border-radius: 6px;
-  cursor: pointer;
-  &:hover {
-    transform: scale(1.03);
-    background-color: var(--primary3);
+  .modal-close {
+    @include small-button;
+    width: 164px;
+    margin-top: 20px;
+    &:hover {
+      transform: scale(1.03);
+    }
   }
 }
 
+// 로그인 실패 모달
 .modal-content {
   text-align: center; /* 텍스트 가운데 정렬 */
   color: $main-color; /* 원하는 텍스트 색상으로 변경 */
@@ -53,5 +47,51 @@
   }
   .modal-text {
     font-size: 18px; /* 내용 폰트 크기 조정 */
+  }
+}
+
+// 연차 리스트 수정,삭제 모달
+.modal-content {
+  width: 80%; /* 모달의 최대 너비 조정 */
+  max-width: 500px; /* 모달의 최대 너비 제한 */
+  height: 300px;
+  background-color: $white-color;
+  border-radius: 30px;
+  overflow: hidden;
+  padding: 20px; /* 모달 내부 컨텐츠 주변 여백 조정 */
+  font-size: 16px; /* 폰트 크기 조정 */
+  // margin-top: 20px; /* 모달 컨텐츠 상단 여백 추가 */
+  text-align: center; /* 내용을 가운데 정렬 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .modal-header {
+    font-size: 18px;
+  }
+  .modal-title {
+    label {
+    }
+  }
+  .addEvent-start {
+  }
+  .addEvent-end {
+  }
+  .addEvent-reason {
+  }
+  .btn-group {
+    width: 200px;
+    display: flex;
+    background-color: red;
+    margin-top: 20px;
+    &:hover {
+      transform: scale(1.03);
+    }
+    .btn-delet {
+      @include middle-button-outline;
+    }
+    .btn-edit {
+      @include middle-button;
+    }
   }
 }

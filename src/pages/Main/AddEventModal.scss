@@ -2,7 +2,7 @@
 @import "src/_mixin.scss";
 
 .ReactModal__Overlay {
-  z-index: 9999;
+  z-index: 99;
   background-color: rgba($main-color, $alpha: 0.5);
   position: fixed;
   inset: 0px;
@@ -15,19 +15,18 @@
   border-radius: 35px;
   position: absolute;
   inset: 40px;
-  border: 1px solid rgb(204, 204, 204);
-  background: rgb(255, 255, 255);
+  border: 1px solid $light-Grey-color;
+  background: $white-color;
   overflow: auto;
-  font-family: "noto-sans";
+  font-family: "Montserrat", "Noto Sans KR", sans-serif;
   outline: none;
   padding: 20px;
   input {
     width: 399px;
     height: 46px;
     border: none;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 10px;
-    padding-right: 20px;
     background-color: $light-Grey-color;
     padding-left: 20px;
     color: $sub-color;
@@ -36,7 +35,6 @@
     padding-left: 20px;
     color: $sub-color;
     border: none;
-    font-size: 16px;
     cursor: pointer;
   }
   div {
@@ -49,120 +47,125 @@
   height: 464px;
   margin: auto;
   padding: 58px 0px;
-}
-.addEvent-wrap label {
-  font-size: 16px;
-  font-weight: bold;
-  color: $main-color;
-}
-.addEvent_header {
-  text-align: center;
-  font-size: 24px;
-  font-weight: bold;
-  margin: 0 auto;
-  margin-bottom: 40px;
-  font-family: "noto-sans";
-}
-.addEvent_title {
-  width: 473px;
-  height: 46px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  input {
-    float: right;
+  .addEvent_header {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    font-family: "Montserrat", "Noto Sans KR", sans-serif;
   }
-}
-
-.addEvent_start {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  input {
-    float: right;
-  }
-}
-.addEvent_end {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  input {
-    float: right;
-  }
-}
-
-.addEvent_category {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  input {
-    float: left;
-    width: 22px;
-  }
-
-  .addCategory_wrap {
-    width: 400px;
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-  }
-  .add_Rest {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-right: 30px;
-    input {
-      margin-right: 10px;
-    }
-  }
-
-  .add_Duty {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-right: 30px;
-    input {
-      margin-right: 10px;
-    }
-  }
-}
-
-.addEvent_reason {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  input {
-    float: right;
-  }
-  select {
-    border-radius: 10px;
-    background-color: $light-Grey-color;
-    border: none;
-    width: 400px;
-    height: 50px;
-  }
-}
-
-.btn_group {
-  width: 365px;
-  height: 54px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
-  margin-top: 50px;
-  button {
-    font-family: "noto-sans";
-    width: 177px;
-    height: 54px;
-    font-size: 16px;
+  .add_title {
+    font-size: 14px;
     font-weight: bold;
-    border: 2px solid $main-color;
     color: $main-color;
-    border-radius: 10px;
   }
-  button:hover {
-    background-color: $main-color;
-    color: white;
+  .addEvent_title {
+    width: 473px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    input {
+      float: right;
+      font-size: 14px;
+    }
+  }
+  .addEvent_start {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    input {
+      float: right;
+    }
+  }
+  .addEvent_end {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    input {
+      float: right;
+    }
+  }
+  .addEvent_category {
+    position: relative;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    .addCategory_wrap {
+      position: absolute;
+      width: 170px;
+      display: flex;
+      left: 95px;
+      top: 0;
+    }
+    .add_Rest {
+      display: flex;
+      width: 80px;
+      height: 50px;
+      align-items: center;
+      .input_dayoff_checkbox {
+        @include custom-checkbox(
+          transparent,
+          $point-color-50,
+          $point-color,
+          $white-color
+        );
+      }
+    }
+    .add_Duty {
+      display: flex;
+      width: 80px;
+      height: 50px;
+      align-items: center;
+      .input_duty_checkbox {
+        @include custom-checkbox(
+          transparent,
+          $date-color-green-50,
+          $date-color-green,
+          $white-color
+        );
+      }
+    }
+  }
+  .addEvent_reason {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    input {
+      float: right;
+    }
+    select {
+      border-radius: 10px;
+      background-color: $light-Grey-color;
+      border: none;
+      width: 400px;
+      height: 50px;
+      &:focus-within {
+        border: 1.5px solid $sub-color;
+      }
+    }
+  }
+  .btn_wrap {
+    margin: auto;
+    margin-top: 50px;
+    width: 365px;
+    height: 54px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    font-weight: 700;
+    .close_btn {
+      margin-right: 15px;
+      @include middle-button-outline;
+      &:hover {
+        background-color: $light-Green-BG-color;
+      }
+    }
+    .submit_btn {
+      @include middle-button;
+    }
   }
 }
