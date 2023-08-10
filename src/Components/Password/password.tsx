@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react";
-import { postPassword } from "@/Api/apis.ts";
+import { postPassword } from "@/Api/apis";
 import { useNavigate } from "react-router-dom";
 import styles from "./Password.module.scss";
 

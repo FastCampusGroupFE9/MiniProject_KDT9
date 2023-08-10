@@ -1,5 +1,5 @@
 import { QueryClient, useMutation, useQuery } from "@tanstack/react-query";
-import { getListAll, getMyPage, permission, postDelete, postUpdate } from "@/Api/apis.ts";
+import { getListAll, getMyPage, permission, postDelete, postUpdate } from "@/Api/apis";
 
 
 export default function useDataQuery() {

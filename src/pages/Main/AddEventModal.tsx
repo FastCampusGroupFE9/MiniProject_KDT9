@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./AddEventModal.scss";
 import Modal from "react-modal";
-import { postMain } from "@/Api/apis.ts";
+import { postMain } from "@/Api/apis";
 
 interface AddEventModalProps {
   isOpen: boolean;

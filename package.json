@@ -7,6 +7,7 @@
     "dev:mac": "HTTPS=true SSL_CRT_FILE=./.cert/localhost.pem SSL_KEY_FILE=./.cert/localhost-key.pem vite",
     "dev": "vite",
     "build": "tsc && vite build",
+    "ci": "npm run build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

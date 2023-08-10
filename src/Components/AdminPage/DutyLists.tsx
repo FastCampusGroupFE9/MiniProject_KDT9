@@ -1,6 +1,6 @@
 import styles from "./DutyLists.module.scss";
-import { useState, useEffect } from "react";
-import { permission } from "@/Api/apis.ts";
+import { useState } from "react";
+import { permission } from "@/Api/apis";
 
 interface Props {
   item: AdminListsAll;

@@ -4,14 +4,13 @@ import Header from "../../Components/Header/Header.tsx";
 import DutyList from "@/Components/DutyList/DutyList.tsx";
 import styles from "./mypage.module.scss";
 import { useState } from "react";
-import Password from "@/Components/Password/Password.tsx";
+import Password from "../../Components/Password/password.tsx";
 import useDataQuery from "@/Hooks/useData-Query.tsx";
 
 export default function Mypage() {
   const [category, setCategory] = useState(false);
-  const {getMyPageData} = useDataQuery()
-  const {isLoading, isError, data:myData} = getMyPageData;
-
+  const { getMyPageData } = useDataQuery();
+  const { isLoading, isError, data: myData } = getMyPageData;
 
   if (isLoading) {
     return <div>Loading...</div>;
