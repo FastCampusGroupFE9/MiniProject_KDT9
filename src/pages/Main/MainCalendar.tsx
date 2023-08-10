@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -7,7 +6,7 @@ import AddEventModal from "./AddEventModal";
 import { useNavigate } from "react-router-dom";
 import EventModal from "./EventModal";
 import Logout from "@/Components/Logout/Logout";
-import { getMainPage, getSilentAxios, getAccessToken } from "../../Api/apis"
+import { getMainPage, getSilentAxios, getAccessToken } from "@/Api/apis";
 
 const MainCalendar = () => {
   const [selectedCategories, setSelectedCategories] = useState([
@@ -31,7 +30,6 @@ const MainCalendar = () => {
         const ACCESSTOKEN: string | undefined = getAccessToken();
 
         const mainInfo = await getMainPage(ACCESSTOKEN ?? "");
-        
 
         if (mainInfo?.data.annuals && Array.isArray(mainInfo.data.annuals)) {
           const processedEvents = mainInfo.data.annuals.map((annuals: any) => {
@@ -39,11 +37,10 @@ const MainCalendar = () => {
             const startTime = new Date(annuals.startDate); // 시작 시간을 Date 객체로 변환
             const endTime = new Date(annuals.endDate); // 종료 시간을 Date 객체로 변환.
 
-            
             if (startTime.toISOString() === endTime.toISOString()) {
               endTime.setHours(23, 59, 59); // 해당 날짜의 마지막 시간으로 설정
             }
-        
+
             return {
               ...rest,
               start: startTime,
@@ -54,13 +51,12 @@ const MainCalendar = () => {
               detail: annuals.title,
             };
           });
-        
+
           setEvents(mainInfo.data.annuals);
           setProcessedEvents(processedEvents);
           setUserName(mainInfo.data.username);
           const ROLE = localStorage.getItem("role");
           setRole(ROLE ?? null);
-  
         }
       } catch (error) {
         console.error("메인페이지 컴포넌트 에러: ", error);
@@ -93,18 +89,18 @@ const MainCalendar = () => {
       const updatedCategories = selectedCategories.includes(category)
         ? selectedCategories.filter((c) => c !== category)
         : [...selectedCategories, category];
-      
-      setSelectedCategories(updatedCategories);
 
+      setSelectedCategories(updatedCategories);
     }
   };
 
   // 선택된 카테고리에 따라 이벤트 필터링
-  const filteredEvents = selectedCategories.length === 0
-  ? [] // 빈 배열을 할당하여 아무 이벤트도 표시하지 않도록 설정
-  : processedEvents.filter((event: { category: string }) =>
-      selectedCategories.includes(event.category),
-    );
+  const filteredEvents =
+    selectedCategories.length === 0
+      ? [] // 빈 배열을 할당하여 아무 이벤트도 표시하지 않도록 설정
+      : processedEvents.filter((event: { category: string }) =>
+          selectedCategories.includes(event.category),
+        );
   // 연차 리스트 개수
   const selectedAnnualLeave = events.filter(
     (event: any) => event.category === "연차",
@@ -137,13 +133,11 @@ const MainCalendar = () => {
   const handleAllEventsToggle = () => {
     const newValue = !isAllEventsChecked;
     setIsAllEventsChecked(newValue);
-  
+
     if (!newValue) {
       setSelectedCategories([]);
     }
   };
-  
-
 
   useEffect(() => {
     if (isAllEventsChecked) {
@@ -152,7 +146,6 @@ const MainCalendar = () => {
       setSelectedCategories([]);
     }
   }, [isAllEventsChecked]);
-
 
   return (
     <div className="main_page">
@@ -246,9 +239,11 @@ const MainCalendar = () => {
           </div>
           <AddEventModal
             isOpen={isAddModalOpen}
-            closeModal={() => setIsAddModalOpen(false)} handleAddEvent={function (): void {
+            closeModal={() => setIsAddModalOpen(false)}
+            handleAddEvent={function (): void {
               throw new Error("Function not implemented.");
-            } }          />
+            }}
+          />
         </div>
         <div className="calendar_wrap">
           <FullCalendar

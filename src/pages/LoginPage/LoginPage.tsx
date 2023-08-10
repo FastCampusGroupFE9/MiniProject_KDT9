@@ -2,8 +2,8 @@ import { FormEvent, useEffect, useState } from "react";
 import "./LoginPage.scss";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../Api/apis";
-import Modal from "../../Components/Modal/Modal";
+import { login } from "@/Api/apis";
+import Modal from "@/Components/Modal/Modal";
 
 interface LoginPageProps {
   setIsLogined: (value: boolean) => void;

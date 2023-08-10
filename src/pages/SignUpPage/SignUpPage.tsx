@@ -1,9 +1,9 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import "./SignUpPage.scss";
 import { useNavigate } from "react-router-dom";
-import { signUp } from "../../Api/apis";
-import Modal from "../../Components/Modal/Modal";
-import ErrorModal from "../../Components/ErrorModal/ErrorModal";
+import { signUp } from "@/Api/apis";
+import Modal from "@/Components/Modal/Modal";
+import ErrorModal from "@/Components/ErrorModal/ErrorModal";
 
 export default function SignUpPage() {
   const navigate = useNavigate();

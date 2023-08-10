@@ -5,7 +5,7 @@ import {
   permission,
   postDelete,
   postUpdate,
-} from "../Api/apis";
+} from "@/Api/apis";
 
 export default function useDataQuery() {
   const queryClient = new QueryClient();
