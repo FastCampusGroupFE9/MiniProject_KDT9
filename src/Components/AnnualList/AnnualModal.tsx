@@ -139,10 +139,8 @@ export default function AnnualModal(props: { annual?: AnnualType, id:number,visi
             )
             }
           </div>
-          <div className="btn-group">
             <button onClick={handleDelete}>삭 제</button>
             <button onClick={handleSubmit}>수 정</button>
-          </div>
         </div>
       </Modal>
     </>
