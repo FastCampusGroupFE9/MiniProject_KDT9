@@ -1,5 +1,5 @@
 [[redirects]]
 from = "/proxy/*"
-  to = "https://hmteresting.netlify.app/:splat"  
+  to = "https://miniproject-team9.p-e.kr/:splat"  
   status = 200
   force = true
