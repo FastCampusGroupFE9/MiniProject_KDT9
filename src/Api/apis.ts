@@ -125,7 +125,7 @@ const result = await silentAxios.get("/api/user", {
   },
   {
   withCredentials: true,
-}
+},
 });
 
 
@@ -197,7 +197,7 @@ const response = await ApiHttp.get("/api/main", {
   },
   {
     withCredentials: true,
-  }
+  },
 });
     return response;
   } catch (error) {
