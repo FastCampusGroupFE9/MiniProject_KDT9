@@ -16,7 +16,7 @@ const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
       )
       .then(res => console.log(res.data))
 	  .catch(err => console.error(err))
-
+const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
 export const getAccessToken = (): string | undefined => {
   const cookie = new Cookies();
   return cookie.get("accessToken");
@@ -25,20 +25,20 @@ export const getAccessToken = (): string | undefined => {
 
 const ACCESSTOKEN = getAccessToken();
 export const ApiHttp: AxiosInstance = axios.create({
-  baseURL: "/",
+  baseURL: `${PROXY}/mini`/,
   headers: {
     Authorization: `Bearer ${ACCESSTOKEN}`,
   },
 });
 
 export const ApiLogin: AxiosInstance = axios.create({
-  baseURL: "/",
+  baseURL: `${PROXY}/mini`/,
 });
 
 // 재요청 인스턴스
 export const getSilentAxios = (token: string): AxiosInstance => {
   const silentAxios: AxiosInstance = axios.create({
-    baseURL: "/",
+    baseURL: `${PROXY}/mini`/,
     headers: {
       Authorization: `Bearer ${token}`,
     },
