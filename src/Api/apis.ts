@@ -55,7 +55,7 @@ export const getSilentAxios = (token: string): AxiosInstance => {
 export const getNewAccessToken = async (): Promise<string> => {
   try {
     const response = await ApiHttp.post(
-      `${PROXY}/api/token`, // 프록시로 변경
+      "/api/token", // 프록시로 변경
       {},
       {
         headers: {
@@ -85,7 +85,7 @@ export const getListAll = async (): Promise<any> => {
 export const permission = async (item: { id: number }): Promise<any> => {
   try {
     const res = await ApiHttp.post(
-      `${PROXY}/api/admin/apply`, // 프록시로 변경
+      "/api/admin/apply", // 프록시로 변경
       { id: item.id },
       {
         headers: {
@@ -104,7 +104,7 @@ export const permission = async (item: { id: number }): Promise<any> => {
 // GET_MY_PAGE
 export const getMyPage = async (): Promise<any> => {
   try {
-    const res = await ApiHttp.get(`${PROXY}/api/user`); // 프록시로 변경
+    const res = await ApiHttp.get("/api/user"); // 프록시로 변경
     return res.data;
   } catch (error) {
     // ...
