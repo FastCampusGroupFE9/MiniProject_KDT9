@@ -25,7 +25,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: 'src/main.tsx', // 혹은 다른 진입 파일로 변경
+        main: 'src/App.tsx', // 혹은 다른 진입 파일로 변경
       },
     },
   },
