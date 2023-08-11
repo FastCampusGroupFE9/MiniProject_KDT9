@@ -58,9 +58,6 @@ export const getNewAccessToken = async (): Promise<string> => {
       "/api/token",
       {},
       {
-        headers: {
-          Authorization: `Bearer ${ACCESSTOKEN}`,
-        },
         withCredentials: true,
       },
     );
