@@ -3,7 +3,7 @@ import { Cookies } from "react-cookie";
 import { UpdateType } from "types/common";
 
 
-const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
+const PROXY = window.location.hostname;
 export const getAccessToken = (): string | undefined => {
   const cookie = new Cookies();
   return cookie.get("accessToken");
