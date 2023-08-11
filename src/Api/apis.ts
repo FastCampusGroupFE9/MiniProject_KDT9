@@ -172,7 +172,7 @@ export const getMainPage = async (token: string): Promise<any> => {
   try {
     const response = await ApiHttp.get("/api/main", {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${ACCESSTOKEN}`,
       },
     });
     return response;
