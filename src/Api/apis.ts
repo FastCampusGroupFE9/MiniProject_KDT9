@@ -162,7 +162,7 @@ export const signUp = async (
       password,
       name,
       join,
-      }
+      },
       { withCredentials: true },
     );
   } catch (error) {
