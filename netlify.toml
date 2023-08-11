@@ -1,5 +1,5 @@
 [[redirects]]
 from = "/proxy/*"
-  to = "https://miniproject-team9.p-e.kr/:splat"  
+  to = "/index.html"
   status = 200
   force = true
