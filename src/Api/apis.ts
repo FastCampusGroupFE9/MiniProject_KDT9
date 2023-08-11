@@ -123,7 +123,9 @@ const result = await silentAxios.get("/api/user", {
   headers: {
     Authorization: `Bearer ${ACCESSTOKEN}`,
   },
+  {
   withCredentials: true,
+}
 });
 
 
@@ -193,7 +195,9 @@ const response = await ApiHttp.get("/api/main", {
   headers: {
     Authorization: `Bearer ${ACCESSTOKEN}`,
   },
-  withCredentials: true,
+  {
+    withCredentials: true,
+  }
 });
     return response;
   } catch (error) {
