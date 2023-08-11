@@ -14,7 +14,7 @@ export default defineConfig({
   server: {
     host: "leeyongsoo-calendar--hmteresting.netlify.app",
     proxy: {
-      "/": {
+      "/mini": {
         target: "https://miniproject-team9.p-e.kr/",
         changeOrigin: true,
         secure: true,
