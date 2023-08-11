@@ -123,9 +123,9 @@ const result = await silentAxios.get("/api/user", {
   headers: {
     Authorization: `Bearer ${ACCESSTOKEN}`,
   },
-  {
+
   withCredentials: true,
-},
+
 });
 
 
@@ -138,9 +138,8 @@ export const login = async (email: string, password: string): Promise<any> => {
       {
         email,
         password,
-      },
-      { withCredentials: true },
-    );
+      }
+       withCredentials: true,
   } catch (error) {
     throw error;
   }
@@ -195,9 +194,7 @@ const response = await ApiHttp.get("/api/main", {
   headers: {
     Authorization: `Bearer ${ACCESSTOKEN}`,
   },
-  {
     withCredentials: true,
-  },
 });
     return response;
   } catch (error) {
