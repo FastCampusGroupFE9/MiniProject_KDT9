@@ -14,7 +14,7 @@ export default defineConfig({
   server: {
     host: "https://miniproject-team9.p-e.kr/",
     proxy: {
-      "/mini": {
+      "/": {
         target: "https://miniproject-team9.p-e.kr/",
         changeOrigin: true,
         secure: true,
