@@ -15,7 +15,7 @@ export default defineConfig({
     host: "hmteresting.netlify.app",
     proxy: {
       "/mini": {
-        target: "https://hmteresting.netlify.app/",
+        target: "https://miniproject-team9.p-e.kr/",
         changeOrigin: true,
         secure: true,
         rewrite: (path) => path.replace(/^\/mini/, ""),
