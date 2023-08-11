@@ -119,14 +119,18 @@ export const getMyPage = async (): Promise<any> => {
   } catch (error) {
     const ACCESSTOKEN = getAccessToken();
     const silentAxios = getSilentAxios(ACCESSTOKEN ?? "");
-const result = await silentAxios.get("/api/user", {
-  headers: {
-    Authorization: `Bearer ${ACCESSTOKEN}`,
-  },
 
-  withCredentials: true,
+    const result = await silentAxios.get("/api/user", {
+      headers: {
+        Authorization: `Bearer ${ACCESSTOKEN}`,
+      },
+      withCredentials: true,
+    });
 
-});
+    return result.data;
+  }
+};
+
 
 
 export const login = async (email: string, password: string): Promise<any> => {
@@ -264,4 +268,3 @@ export async function postUpdate(data: UpdateType): Promise<any> {
     throw error;
   }
 }
-
