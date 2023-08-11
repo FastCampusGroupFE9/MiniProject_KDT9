@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 import axios, { AxiosInstance } from "axios";
 import { Cookies } from "react-cookie";
 import { UpdateType } from "types/common";
@@ -54,13 +61,18 @@ export const getSilentAxios = (ACCESSTOKEN: string): AxiosInstance => {
 // NEW_ACCESSTOKEN (리프레시 토큰 요청 => 새로운 엑세스 토큰 반환)
 export const getNewAccessToken = async (): Promise<string> => {
   try {
-    const response = await ApiHttp.post(
-      "/api/token",
-      {},
-      {
-        withCredentials: true,
-      },
-    );
+const response = await ApiHttp.post(
+  "/api/token",
+  {},
+  {
+    headers: {
+      Authorization: `Bearer ${ACCESSTOKEN}`,
+    },
+    withCredentials: true,
+  }
+);
+
+    
     const newAccessToken: string = response.data;
     return newAccessToken;
   } catch (error) {
@@ -107,10 +119,13 @@ export const getMyPage = async (): Promise<any> => {
   } catch (error) {
     const ACCESSTOKEN = getAccessToken();
     const silentAxios = getSilentAxios(ACCESSTOKEN ?? "");
-    const result = await silentAxios.get("/api/user");
-    return result.data; // Assuming result is an AxiosResponse object
-  }
-};
+const result = await silentAxios.get("/api/user", {
+  headers: {
+    Authorization: `Bearer ${ACCESSTOKEN}`,
+  },
+  withCredentials: true,
+});
+
 
 // LOG_IN
 export const login = async (email: string, password: string): Promise<any> => {
@@ -152,12 +167,19 @@ export const signUp = async (
 ): Promise<any> => {
 // eslint-disable-next-line no-useless-catch
   try {
-    const response = await ApiLogin.post("/api/register", {
-      email,
-      password,
-      name,
-      join,
-    });
+const response = await ApiLogin.post(
+  "/api/register",
+  {
+    email,
+    password,
+    name,
+    join,
+  },
+  {
+    withCredentials: true,
+  }
+);
+
     return response.data;
   } catch (error) {
     throw error;
@@ -167,8 +189,12 @@ export const signUp = async (
 // GET_MAIN_PAGE
 export const getMainPage = async (): Promise<any> => {
   try {
-    const response = await ApiHttp.get("/api/main", {
-    });
+const response = await ApiHttp.get("/api/main", {
+  headers: {
+    Authorization: `Bearer ${ACCESSTOKEN}`,
+  },
+  withCredentials: true,
+});
     return response;
   } catch (error) {
     const ACCESSTOKEN = getAccessToken();
