@@ -25,7 +25,7 @@ export const ApiLogin: AxiosInstance = axios.create({
 // 재요청 인스턴스
 export const getSilentAxios = (token: string): AxiosInstance => {
   const silentAxios: AxiosInstance = axios.create({
-    baseURL: PROXY,
+    baseURL: /mini,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -176,7 +176,7 @@ export const signUp = async (
 
 export const getMainPage = async (token: string): Promise<any> => {
   try {
-    const response = await ApiHttp.get(`${PROXY}/api/main`, { // 프록시로 변경
+    const response = await ApiHttp.get("/api/main", { // 프록시로 변경
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -185,7 +185,7 @@ export const getMainPage = async (token: string): Promise<any> => {
   } catch (error) {
     const ACCESSTOKEN = getAccessToken();
     const silentAxios = getSilentAxios(ACCESSTOKEN ?? "");
-    const result = await silentAxios.get(`${PROXY}/api/main`);
+    const result = await silentAxios.get("/api/main");
     return result.data; // Assuming result is an AxiosResponse object
   }
 };
@@ -198,7 +198,7 @@ export const postMain = async (
   startDate: string,
 ): Promise<any> => {
   try {
-    const response = await ApiHttp.post(`${PROXY}/api/annual`, { // 프록시로 변경
+    const response = await ApiHttp.post("/api/annual", { // 프록시로 변경
       title,
       category,
       endDate,
