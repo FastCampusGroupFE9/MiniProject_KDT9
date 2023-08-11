@@ -155,17 +155,22 @@ export const signUp = async (
 ): Promise<any> => {
 // eslint-disable-next-line no-useless-catch
   try {
-    const response = await ApiLogin.post("https://leeyongsoo-calendar--hmteresting.netlify.app/api/register", {
+    await ApiLogin.post( 
+      "/api/signup",
+      {      
       email,
       password,
       name,
       join,
-    });
-    return response.data;
+      }
+      { withCredentials: true },
+    );
   } catch (error) {
     throw error;
   }
 };
+
+
 
 // GET_MAIN_PAGE
 export const getMainPage = async (token: string): Promise<any> => {
