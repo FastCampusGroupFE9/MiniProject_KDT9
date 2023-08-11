@@ -275,4 +275,5 @@ export async function postDelete(id: number): Promise<any> {
     console.error("Error submitting event:", error);
     throw error;
   }
+}
 };
