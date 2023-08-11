@@ -56,14 +56,16 @@ export const getNewAccessToken = async (): Promise<string> => {
   try {
     const response = await ApiHttp.post(
       "/api/token",
-      {},
+      {
       headers: {
           Authorization: `Bearer ${ACCESSTOKEN}`,
         },
             {
         withCredentials: true,
       },
+      },
     );
+    
     const newAccessToken: string = response.data;
     return newAccessToken;
   } catch (error) {
@@ -171,13 +173,14 @@ export const signUp = async (
 export const getMainPage = async (): Promise<any> => {
   try {
     const response = await ApiHttp.get("/api/main", 
-    {},
+    {
     headers: {
           Authorization: `Bearer ${ACCESSTOKEN}`,
         },
             {
         withCredentials: true,
       },
+    },                                   
       );
     return response;
   } catch (error) {
