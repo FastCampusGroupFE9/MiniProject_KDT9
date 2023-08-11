@@ -174,6 +174,7 @@ export const getMainPage = async (): Promise<any> => {
     headers: {
           Authorization: `Bearer ${ACCESSTOKEN}`,
         },
+            {
         withCredentials: true,
       },
       );
