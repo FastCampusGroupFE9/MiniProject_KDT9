@@ -12,20 +12,20 @@ export const getAccessToken = (): string | undefined => {
 
 const ACCESSTOKEN = getAccessToken();
 export const ApiHttp: AxiosInstance = axios.create({
-  baseURL: "https://localhost:5173/",
+  baseURL: "https://miniproject-team9.p-e.kr/",
   headers: {
     Authorization: `Bearer ${ACCESSTOKEN}`,
   },
 });
 
 export const ApiLogin: AxiosInstance = axios.create({
-  baseURL: "https://localhost:5173/",
+  baseURL: "https://miniproject-team9.p-e.kr/",
 });
 
 // 재요청 인스턴스
 export const getSilentAxios = (token: string): AxiosInstance => {
   const silentAxios: AxiosInstance = axios.create({
-    baseURL: "https://localhost:5173/",
+    baseURL: "https://miniproject-team9.p-e.kr/",
     headers: {
       Authorization: `Bearer ${token}`,
     },
