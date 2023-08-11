@@ -22,11 +22,4 @@ export default defineConfig({
       },
     },
   },
-  build: {
-    rollupOptions: {
-      input: {
-        main: 'src/App.tsx', // 혹은 다른 진입 파일로 변경
-      },
-    },
-  },
 });
