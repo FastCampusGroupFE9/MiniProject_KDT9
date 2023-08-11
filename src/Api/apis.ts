@@ -57,7 +57,9 @@ export const getNewAccessToken = async (): Promise<string> => {
     const response = await ApiHttp.post(
       "/api/token",
       {},
-      {
+      headers: {
+          Authorization: `Bearer ${ACCESSTOKEN}`,
+        },
         withCredentials: true,
       },
     );
@@ -167,8 +169,14 @@ export const signUp = async (
 // GET_MAIN_PAGE
 export const getMainPage = async (): Promise<any> => {
   try {
-    const response = await ApiHttp.get("/api/main", {
-    });
+    const response = await ApiHttp.get("/api/main", 
+    {},
+    headers: {
+          Authorization: `Bearer ${ACCESSTOKEN}`,
+        },
+        withCredentials: true,
+      },
+      );
     return response;
   } catch (error) {
     const ACCESSTOKEN = getAccessToken();
