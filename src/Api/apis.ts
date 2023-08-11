@@ -23,11 +23,11 @@ export const ApiLogin: AxiosInstance = axios.create({
 });
 
 // 재요청 인스턴스
-export const getSilentAxios = (token: string): AxiosInstance => {
+export const getSilentAxios = (ACCESSTOKEN: string): AxiosInstance => {
   const silentAxios: AxiosInstance = axios.create({
     baseURL: `${PROXY}`,
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${ACCESSTOKEN}`,
     },
   });
   silentAxios.interceptors.response.use(
@@ -168,7 +168,7 @@ export const signUp = async (
 };
 
 // GET_MAIN_PAGE
-export const getMainPage = async (token: string): Promise<any> => {
+export const getMainPage = async (ACCESSTOKEN: string): Promise<any> => {
   try {
     const response = await ApiHttp.get("/api/main", {
       headers: {
