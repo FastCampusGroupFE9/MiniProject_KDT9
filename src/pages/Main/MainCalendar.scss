@@ -1,0 +1,356 @@
+@import "/src/variables";
+@import "src/_mixin.scss";
+
+.main_page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  .main_wrap {
+    position: relative;
+    margin: auto;
+    width: 1080px;
+    height: 850px;
+    display: flex;
+    border-radius: 24px;
+    background-color: $light-Green-BG-color;
+    box-shadow: 4px 4px 30px $main-color-30;
+    .info_wrap {
+      margin: auto;
+      margin-left: 50px;
+      width: 220px;
+      height: 660px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: start;
+      font-size: 16px;
+      font-family: "Montserrat", "Noto Sans KR", sans-serif;
+      .UserInfo {
+        width: 215px;
+        height: 50px;
+        line-height: 1.2;
+        .UserInfo_name {
+          color: $point-color;
+          font-weight: 800;
+          margin-left: 10px;
+        }
+        .UserInfo_icon {
+          color: $point-color;
+          i {
+            margin-left: 15px;
+            margin-bottom: 5px;
+            cursor: pointer;
+          }
+        }
+        .HideInfo {
+          z-index: 2;
+          position: absolute;
+          margin-top: 10px;
+          width: 140px;
+          height: 110px;
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          text-align: center;
+          font-size: 14px;
+          box-shadow: 5px 5px 20px $main-color-30;
+          background-color: $white-color;
+          border-radius: 10px;
+          cursor: pointer;
+          &.visible {
+            display: flex;
+          }
+          li {
+            margin: 0 auto;
+            width: 130px;
+            padding: 13px;
+            li:hover {
+              background-color: $light-Grey-color;
+            }
+          }
+          .my_page {
+            width: 80%;
+            border-bottom: 1px solid $main-color-30;
+          }
+        }
+      }
+      .select_box {
+        position: relative;
+        height: 560px;
+        width: 100%;
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .sub_title {
+          font-size: 24px;
+          font-weight: bold;
+          font-family: "montserrat";
+          color: $black-color;
+          margin: 14px 0;
+        }
+        .select_today {
+          width: 220px;
+          .today_date {
+            color: $main-color;
+            font-weight: 500;
+            padding-left: 3px;
+          }
+        }
+        .select_calendar {
+          width: 220px;
+          position: relative;
+          &::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 1px;
+            background-color: $green-BG-color;
+            position: absolute;
+            top: -28px;
+          }
+          .select_calendar_options {
+            height: 65px;
+            display: flex;
+            flex-direction: column;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: "noto-sans";
+            .select_calendar_option {
+              height: 30px;
+              display: flex;
+              align-items: center;
+              .input_checkbox {
+                @include custom-checkbox(
+                  transparent,
+                  $green-BG-color,
+                  $sub-color,
+                  $white-color
+                );
+              }
+            }
+          }
+        }
+        .select_categories {
+          width: 220px;
+          position: relative;
+          &::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 1px;
+            background-color: $green-BG-color;
+            position: absolute;
+            top: -28px;
+          }
+          .select_category_options {
+            height: 65px;
+            display: flex;
+            flex-direction: column;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: "noto-sans", sans-serif;
+            .select_category_option {
+              height: 30px;
+              display: flex;
+              align-items: center;
+              .input_dayoff_checkbox {
+                @include custom-checkbox(
+                  transparent,
+                  $point-color-50,
+                  $point-color,
+                  $white-color
+                );
+              }
+              .input_duty_checkbox {
+                @include custom-checkbox(
+                  transparent,
+                  $date-color-green-50,
+                  $date-color-green,
+                  $white-color
+                );
+              }
+              .LeaveBox,
+              .dutyBox {
+                position: absolute;
+                right: 0;
+                padding: 5px 15px;
+                background-color: $green-BG-color;
+                color: $main-color;
+                border-radius: 14px;
+                font-size: 14px;
+                font-weight: 800;
+              }
+            }
+          }
+        }
+        .addSchedule_Btn {
+          @include small-button;
+          transition: box-shadow 0.3s ease-in-out;
+          i {
+            margin-left: 10px;
+            transition: rotate 0.2s ease-in-out;
+          }
+          &:hover {
+            box-shadow: 4px 4px 20px $point-color-50;
+          }
+        }
+      }
+    }
+    .calendar_wrap {
+      position: absolute;
+      width: 761px;
+      height: 824px;
+      background-color: $white-color;
+      border-radius: 20px 20px 0 0;
+      bottom: 0;
+      right: 2%;
+    }
+  }
+}
+
+.fc-daygrid-block-event .fc-event-title {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.fc .fc-toolbar {
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.fc-toolbar-title {
+  padding: 0 20px;
+}
+
+.fc-event-time{
+  display: none;
+}
+
+.fc-view-harness-active {
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 20px;
+}
+
+.fc-event-main-frame:hover {
+  background-color: $black-color;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+
+.fc-daygrid-event-harness{
+  :hover{
+    background-color: black;
+    cursor: pointer;
+  }
+}
+
+// 당일 하루 이벤트 
+.fc-event.fc-event-start.fc-event-end.fc-daygrid-event.fc-daygrid-dot-event.fc-daygrid-event{
+  color: rgb(58, 202, 185);
+  border-color: rgb(238, 246, 241);
+  background-color: rgb(238, 246, 241);
+  font-size: 14px;
+  padding: 2px;
+  font-weight: bold;
+
+  :hover{
+    background-color: black;
+    cursor: pointer;
+  }
+
+
+  .fc-event-title{
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+
+.fc-daygrid-event-dot {
+  display: none;
+}
+
+.fc-dayGridMonth-view .fc-view .fc-daygrid {
+  z-index: 10;
+}
+
+.fc-view-harness .fc-view-harness-active {
+  z-index: 10;
+}
+
+.fc .fc-button-primary {
+  background-color: $white-green;
+  border: none;
+  color: $sub-color;
+}
+
+.fc .fc-toolbar-title {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.fc-col-header-cell-cushion {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: "Montserrat";
+  color: $sub-color;
+}
+
+.fc .fc-daygrid-day-top {
+  flex-direction: row;
+}
+
+.fc-scrollgrid-sync-inner {
+  padding-bottom: 10px;
+}
+
+.fc-theme-standard td,
+.fc-theme-standard th {
+  border: none;
+  tr {
+    border-top: 1px solid $sub-color;
+  }
+}
+
+.fc-scrollgrid.fc-scrollgrid-liquid {
+  border: none;
+  border-bottom: 3px solid $sub-color;
+}
+
+.fc-col-header-cell.fc-day {
+  border-bottom: 3px solid $sub-color;
+}
+
+.fc .fc-daygrid-day-number {
+  font-size: 16px;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  padding: 10px;
+}
+
+.fc .fc-day-other .fc-daygrid-day-top {
+  color: $green-BG-color;
+  opacity: 1;
+}
+
+.fc-daygrid-day-frame {
+  border-left: 1px solid $green-BG-color;
+}
+
+.fc-scroller-harness-liquid {
+  border-right: 1px solid $green-BG-color;
+}
+
+.fc-day-sat {
+  color: $date-color-blue;
+}
+
+.fc-day-sun {
+  color: $point-color;
+}

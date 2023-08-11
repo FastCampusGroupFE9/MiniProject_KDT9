@@ -1,0 +1,63 @@
+[
+  {
+    "email": "cjzak0@naver.com",
+    "password": "$2a$04$c9FhdT09lvcCb250DjLdKeX1PIQjv2TkbE.OkvfD73CwOzyoJbS9m",
+    "name": "김땡땡",
+    "joinDate": "2023-03-27"
+  },
+  {
+    "email": "nduester1@gmail.com",
+    "password": "$2a$04$tpse8d1m7ocpBLn1prCJBOsu9So/yTi4A2TpRnt8mj/yyZyDeShG6",
+    "name": "박땡땡",
+    "joinDate": "2022-09-15"
+  },
+  {
+    "email": "tbruineman2@naver.com",
+    "password": "$2a$04$wylfBvz8hQ6ZNcTMtW39h.uLBHo.iKRuWNfWAQyaUlp5lSkqdeGGe",
+    "name": "고길동",
+    "joinDate": "2021-03-31"
+  },
+  {
+    "email": "rantoniutti3@gmail.com",
+    "password": "$2a$04$f/zPQ48GVImW7RAk8vHNX.67wKNzzjY2bVXDH3ap8GCUpjB/pSI/u",
+    "name": "송땡땡",
+    "joinDate": "2022-09-27"
+  },
+  {
+    "email": "bscurrell4@hanmail.net",
+    "password": "$2a$04$8siG.pXXi8jHIZ7z8VIKs.06Xmtj98XNj1y7z.lOIJFMGef6obQUC",
+    "name": "아무개",
+    "joinDate": "2023-08-10"
+  },
+  {
+    "email": "efarquar5@gmail.com",
+    "password": "$2a$04$8/2nCi3EVer5bExUbYP9N.O6PeceSVN4IebosR7Czu7cI4KJrb38O",
+    "name": "김김김",
+    "joinDate": "2022-05-01"
+  },
+  {
+    "email": "astud6@gmail.com",
+    "password": "$2a$04$ES3t8zrizq5kC.hKWbASJOTVA12fozc9OpAbpOxdXJ5zTHO35BY9C",
+    "name": "박박박",
+    "joinDate": "2021-01-07"
+  },
+  {
+    "email": "gbryceson7@naver.com",
+    "password": "$2a$04$DY/70RcPDcs.f4h88aWvDuR5UiQDUjltf8ZeL5Oam.xhGQEZ1/H8e",
+    "name": "송송송",
+    "joinDate": "2020-10-22"
+  },
+  {
+    "email": "aplank8@naver.com",
+    "password": "$2a$04$kWFZOtRWjLu7F6TVXdFDSOYvBxsIcgSIXbU3WwAGlF5dURrUHvTpy",
+    "name": "이이이",
+    "joinDate": "2022-06-28"
+  },
+  {
+    "email": "nilyunin9@gmail.com",
+    "password": "$2a$04$lgHZrfIsK0k6nAINt5UA7.x1C0j2/fOt2y0TgsEnLx.UBAWUCj9pS",
+    "name": "김박이",
+    "joinDate": "2022-09-16"
+  }
+]
+

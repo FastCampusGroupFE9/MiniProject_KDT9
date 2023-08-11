@@ -1,0 +1,65 @@
+@import "src/_variables.scss";
+
+.page {
+  top: 0;
+  padding-top: 100px;
+  width: 100%;
+  height: 100vh;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Montserrat", "Noto Sans KR", sans-serif;
+  background-color: $green-BG-color;
+  .container {
+    margin: auto;
+    position: relative;
+    width: 1080px;
+    height: 950px;
+    border-radius: 40px;
+    background-color: $white-color;
+    box-shadow: 5px 5px 20px $main-color-30;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    .list_box {
+      position: absolute;
+      width: 90%;
+      height: 75%;
+      margin-top: 170px;
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      // background-color: red;
+      .annual {
+        width: 100%;
+        height: 40%;
+        margin-top: 20px;
+      }
+      .duty {
+        width: 100%;
+        height: 40%;
+        margin-top: 95px;
+      }
+      .title {
+        font-size: 16px;
+        padding-left: 20px;
+        &:last-child {
+          margin-top: 50px;
+        }
+      }
+    }
+    .profile_box {
+      width: 90%;
+      height: 55%;
+      margin-bottom: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      .title {
+        text-align: center;
+        font-size: 22px;
+        font-weight: 800;
+      }
+    }
+  }
+}

@@ -1,0 +1,112 @@
+@import "/src/_variables";
+@import "src/_mixin.scss";
+
+.custom_modal_content {
+  width: 660px;
+  height: 600px;
+  margin: auto;
+  border-radius: 35px;
+  inset: 40px;
+  border: 1px solid $light-Grey-color;
+  background: $white-color;
+  overflow: auto;
+  font-family: "Montserrat", "Noto Sans KR", sans-serif;
+  outline: none;
+  padding: 20px;
+  .addEvent_wrap {
+    width: 473px;
+    height: 464px;
+    // margin: 70px 0 0 70px;
+    padding: 58px 0px;
+    .addEvent_header {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 40px;
+      // font-family: "Montserrat", "Noto Sans KR", sans-serif;
+    }
+    .add_title {
+      font-size: 14px;
+      font-weight: bold;
+      color: $main-color;
+    }
+    .addEvent_title {
+      width: 473px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      input {
+        float: right;
+        font-size: 14px;
+        cursor: pointer;
+      }
+    }
+    .addEvent_start {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      input {
+        float: right;
+      }
+    }
+    .addEvent_end {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      input {
+        float: right;
+      }
+    }
+    .addEvent_reason {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      input {
+        float: right;
+      }
+      select {
+        border-radius: 10px;
+        background-color: $light-Grey-color;
+        border: none;
+        width: 400px;
+        height: 50px;
+        &:focus-within {
+          border: 1.5px solid $sub-color;
+        }
+      }
+    }
+    .btn_wrap {
+      margin: auto;
+      margin-top: 50px;
+      width: 365px;
+      height: 54px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      font-weight: 700;
+      .close_btn {
+        margin-right: 15px;
+        @include middle-button-outline;
+        &:hover {
+          background-color: $light-Green-BG-color;
+        }
+      }
+      .submit_btn {
+        @include middle-button;
+      }
+    }
+  }
+  .Event_close {
+    position: absolute;
+    top: 8%;
+    right: 6%;
+    width: 40px;
+    height: 40px;
+    color: $green-BG-color;
+    font-size: 2rem;
+    transform: rotate(45deg);
+    cursor: pointer;
+  }
+}

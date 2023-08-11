@@ -1,0 +1,69 @@
+@import "src/_variables.scss";
+@import "src/_mixin.scss";
+
+.search_box {
+  position: relative;
+  width: 550px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  .search_option {
+    width: 30%;
+    height: 100%;
+    margin-right: 20px;
+    border-radius: 10px;
+    background-color: $light-Green-BG-color;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    overflow: hidden;
+    button {
+      width: 50%;
+      padding: 8px;
+      color: $sub-color;
+      font-weight: 700;
+      &.active {
+        width: 50%;
+        height: 100%;
+        background-color: $sub-color;
+        color: $white-color;
+      }
+    }
+    .btn {
+      width: 65%;
+    }
+  }
+  .search_bar {
+    width: 70%;
+    height: 100%;
+    border-radius: 10px;
+    font-size: 14px;
+    padding: 10px 20px;
+    background-color: $light-Grey-color;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    &:focus-within {
+      border: 1.5px solid $sub-color;
+    }
+    .search_input {
+      width: 100%;
+      background-color: transparent;
+      @include wide-input;
+    }
+    .search_icon {
+      position: relative;
+      height: 100%;
+      margin: auto;
+      opacity: 30%;
+      .search_img {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        top: -2px;
+        right: 2px;
+        cursor: pointer;
+      }
+    }
+  }
+}

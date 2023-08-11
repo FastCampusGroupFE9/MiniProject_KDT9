@@ -1,0 +1,77 @@
+@import "/src/variables.scss";
+
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  .guide_wrap {
+    z-index: 1;
+    position: absolute;
+    top: 150px;
+    width: 500px;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Montserrat", "Noto Sans KR", sans-serif;
+    text-align: center;
+    color: $main-color;
+    .main_text {
+      font-size: 36px;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+    .sub_text {
+      font-size: 14px;
+      color: $sub-color;
+      font-weight: 500;
+    }
+    .nav_btn {
+      margin-top: 40px;
+      width: 210px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 30px;
+      border-radius: 40px;
+      color: $green-BG-color;
+      background-color: $main-color;
+      .text {
+        color: $white-color;
+        font-weight: 800;
+        border-bottom: 1px solid $main-color;
+      }
+      .icon {
+        font-size: 20px;
+        margin-left: 10px;
+      }
+    }
+  }
+  .bg_circle {
+    position: absolute;
+    bottom: -100px;
+    width: 80vw;
+    height: 540px;
+    background-color: $main-color-30;
+    border-radius: 800px 800px 0 0;
+    display: flex;
+    justify-content: center;
+    .bg_text {
+      width: 1200px;
+      margin-top: 90px;
+      text-align: center;
+      font-size: 8rem;
+      font-weight: 800;
+      color: $main-color;
+      span{
+        display: inline-block;
+        width: 60%;
+      }
+    }
+  }
+}

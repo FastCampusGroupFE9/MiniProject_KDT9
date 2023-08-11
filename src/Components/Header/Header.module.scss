@@ -1,0 +1,24 @@
+@import "src/_variables.scss";
+
+.header {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  height: 60px;
+  width: 100vw;
+  font-family: 'Montserrat','Noto Sans KR', sans-serif;
+  background-color: $main-color;
+  .title {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 800;
+    color: $white-color;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+      color: $point-color;
+    }
+  }
+}

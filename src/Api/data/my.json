@@ -1,0 +1,43 @@
+
+  {
+    "name": "고길동",
+    "annualBalance": 20,
+    "annualUsed": 15,
+    "annualRemain": 8,
+    "annualHistories": [
+      {
+        "id": 0,
+        "title": "여름 휴가 연차 사용의 건",
+        "reason": "경조사",
+        "startDate": "2023-01-09",
+        "endDate": "2023-01-15",
+        "status": "완료"
+      },
+      {
+        "id": 2,
+        "title": "병가 휴가 연차 사용의 건",
+        "reason": "병 가",
+        "startDate": "2023-03-24",
+        "endDate": "2023-03-28",
+        "status": "완료"
+      },
+      {
+        "id": 3,
+        "title": "경조사 휴가 사용의 건",
+        "reason": "병 가",
+        "startDate": "2023-02-23",
+        "endDate": "2023-02-27",
+        "status": "대기"
+      }
+    ],
+    "dutyHistories": [
+      {
+        "id": 1,
+        "title": "고길동 대리 | 7월 당직 결재건",
+        "startDate": "2023-03-10",
+        "endDate": "2023-03-10",
+        "status": "대기"
+      }
+    ]
+  }
+

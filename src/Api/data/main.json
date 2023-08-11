@@ -1,0 +1,12 @@
+
+    [
+      {
+        "id": 1,
+        "email": "test@test.com",
+        "name": "테스트1",
+        "category": "연차",
+        "startDate": "2023-07-31",
+        "endDate": "2023-08-02",
+        "reason": "경조사"
+      }
+    ]

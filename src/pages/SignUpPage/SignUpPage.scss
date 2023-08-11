@@ -1,0 +1,117 @@
+@import "src/_variables.scss";
+@import "src/_mixin.scss";
+
+.signup_page {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat", "Noto Sans KR", sans-serif;
+  color: $black-color;
+  font-size: 14px;
+  font-weight: 600;
+  .signup_box {
+    width: 600px;
+    height: 780px;
+    margin: auto;
+    padding: 70px 80px;
+    border-radius: 30px;
+    background-color: $white-color;
+    box-shadow: 5px 5px 20px $main-color-30;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    .signup_title {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 800;
+    }
+    .content_wrap {
+      position: relative;
+      margin-top: 20px;
+      width: 100%;
+      .input_title {
+        color: $black-color;
+        font-weight: 800;
+        margin-left: 10px;
+        margin-top: 20px;
+      }
+      .content_box {
+        height: 70px;
+        color: $main-color;
+        .input_box {
+          display: flex;
+          border-radius: 10px;
+          padding: 12px;
+          margin-top: 7px;
+          background-color: $light-Grey-color;
+          &:focus-within {
+            border: 1.5px solid $sub-color;
+          }
+          .input {
+            @include wide-input;
+          }
+          i {
+            margin: auto;
+          }
+        }
+        .error_message {
+          @include error-message;
+        }
+      }
+      .select_date {
+        display: flex;
+        justify-content: space-between;
+        .select-long {
+          @include select-wide-input;
+        }
+        .select-short {
+          @include select-middle-input;
+        }
+      }
+    }
+    .btn_wrap {
+      width: 100%;
+      text-align: center;
+      .signup_btn {
+        @include wide-button;
+      }
+      .login_btn {
+        color: $main-color;
+        font-weight: 700;
+        cursor: pointer;
+      }
+    }
+  }
+  // 회원가입 실패 모달
+  .modal_content {
+    position: relative;
+    top: 10%;
+    height: 85%;
+    padding: 25px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    .modal_title {
+      margin-top: 20px;
+      font-size: 18px;
+      text-align: center;
+      font-weight: 800;
+      color: $black-color;
+    }
+    .modal_text {
+      font-size: 14px;
+      width: 60%;
+      line-height: 1.8;
+      color: $black-color-50;
+    }
+    .modal_closebtn {
+      @include small-button;
+      width: 45%;
+      margin-top: 20px;
+    }
+  }
+}

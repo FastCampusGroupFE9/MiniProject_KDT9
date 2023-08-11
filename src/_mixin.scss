@@ -1,0 +1,200 @@
+// === 버튼 스타일 === //
+
+@mixin wide-button {
+  margin: 40px auto 20px;
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 15px;
+  background-color: $main-color;
+  color: $white-color;
+  font-weight: 700;
+  cursor: pointer;
+}
+// 등록하기, 모달 닫기 버튼
+@mixin small-button {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  background-color: $point-color;
+  color: $white-color;
+  font-weight: 800;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+@mixin middle-button {
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background-color: $main-color;
+  color: $white-color;
+  font-weight: 800;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+@mixin middle-button-outline {
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  border: 2px solid $main-color; 
+  background-color: $white-color;
+  color: $main-color;
+  font-weight: 800;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+@mixin non-permission-button {
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-weight: 700;
+  color: $white-color;
+  background-color: $point-color;
+  cursor: pointer;
+}
+
+@mixin permission-button {
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-weight: 700;
+  color: $sub-color;
+  background-color: $green-BG-color;
+  cursor: auto;
+}
+
+// === 에러 메세지 === //
+
+@mixin error-message {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 400;
+  color: $point-color;
+  margin-left: 10px;
+}
+
+// === 인풋 스타일 === //
+
+@mixin wide-input {
+  width: 100%;
+  font-size: 14px;
+  font-weight: 500;
+  color: $main-color;
+  background-color: $light-Grey-color;
+  &::placeholder {
+    font-weight: 500;
+    font-size: 14px;
+    color: $sub-color;
+  }
+}
+
+@mixin select-wide-input {
+  width: 200px;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: right;
+  color: $sub-color;
+  border: none;
+  border-right: 3px solid $light-Grey-color;
+  outline: none;
+  border-radius: 10px;
+  background-color: $light-Grey-color;
+  &:focus-within {
+    border: 1.5px solid $sub-color;
+  }
+}
+
+@mixin select-middle-input {
+  width: 100px;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: right;
+  color: $sub-color;
+  border: none;
+  border-radius: 10px;
+  background-color: $light-Grey-color;
+  &:focus-within {
+    border: 1.5px solid $sub-color;
+  }
+}
+
+@mixin index-bar {
+  content: "|";
+  float: right;
+  color: $green-BG-color;
+}
+
+// === 체크 박스 스타일 === //
+
+@mixin custom-checkbox(
+  $border-color,
+  $bg-color,
+  $checked-bg-color,
+  $check-color
+) {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 2px solid $border-color;
+  background-color: $bg-color;
+  border-radius: 6px;
+  position: relative;
+  margin-right: 6px;
+  cursor: pointer;
+  &::before {
+    content: "";
+    display: block;
+    width: 6px;
+    height: 13px;
+    border: solid $check-color;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+    position: absolute;
+    left: 28%;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+  &:checked {
+    background-color: $checked-bg-color;
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+// === 카테고리 태그 스타일 === //
+
+@mixin tags($bg-color, $main-color) {
+  margin: 0 5px;
+  width: 60px;
+  height: 28px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 800;
+  border-radius: 20px;
+  color: $main-color;
+  background-color: $bg-color;
+  .tag {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 20px;
+      background-color: $main-color;
+      margin-right: 5px;
+    }
+  }
+}

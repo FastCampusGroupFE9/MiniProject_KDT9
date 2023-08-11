@@ -1,0 +1,171 @@
+@import "/src/_variables";
+@import "src/_mixin.scss";
+
+.ReactModal__Overlay {
+  z-index: 99;
+  background-color: rgba($main-color, $alpha: 0.5);
+  position: fixed;
+  inset: 0px;
+}
+
+.custom_modal_content {
+  width: 660px;
+  height: 600px;
+  margin: auto;
+  border-radius: 35px;
+  position: absolute;
+  inset: 40px;
+  border: 1px solid $light-Grey-color;
+  background: $white-color;
+  overflow: auto;
+  font-family: "Montserrat", "Noto Sans KR", sans-serif;
+  outline: none;
+  padding: 20px;
+  input {
+    width: 399px;
+    height: 46px;
+    border: none;
+    font-size: 14px;
+    border-radius: 10px;
+    background-color: $light-Grey-color;
+    padding-left: 20px;
+    color: $sub-color;
+  }
+  select {
+    padding-left: 20px;
+    color: $sub-color;
+    border: none;
+    cursor: pointer;
+  }
+  div {
+    margin-bottom: 13px;
+  }
+}
+
+.addEvent_wrap {
+  width: 473px;
+  height: 464px;
+  margin: auto;
+  padding: 58px 0px;
+  .addEvent_header {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    font-family: "Montserrat", "Noto Sans KR", sans-serif;
+  }
+  .add_title {
+    font-size: 14px;
+    font-weight: bold;
+    color: $main-color;
+  }
+  .addEvent_title {
+    width: 473px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    input {
+      float: right;
+      font-size: 14px;
+    }
+  }
+  .addEvent_start {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    input {
+      float: right;
+    }
+  }
+  .addEvent_end {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    input {
+      float: right;
+    }
+  }
+  .addEvent_category {
+    position: relative;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    .addCategory_wrap {
+      position: absolute;
+      width: 170px;
+      display: flex;
+      left: 95px;
+      top: 0;
+    }
+    .add_Rest {
+      display: flex;
+      width: 80px;
+      height: 50px;
+      align-items: center;
+      .input_dayoff_checkbox {
+        @include custom-checkbox(
+          transparent,
+          $point-color-50,
+          $point-color,
+          $white-color
+        );
+      }
+    }
+    .add_Duty {
+      display: flex;
+      width: 80px;
+      height: 50px;
+      align-items: center;
+      .input_duty_checkbox {
+        @include custom-checkbox(
+          transparent,
+          $date-color-green-50,
+          $date-color-green,
+          $white-color
+        );
+      }
+    }
+  }
+  .addEvent_reason {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    input {
+      float: right;
+    }
+    select {
+      border-radius: 10px;
+      background-color: $light-Grey-color;
+      border: none;
+      width: 400px;
+      height: 50px;
+      &:focus-within {
+        border: 1.5px solid $sub-color;
+      }
+    }
+  }
+  .btn_wrap {
+    margin: auto;
+    margin-top: 50px;
+    width: 365px;
+    height: 54px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    font-weight: 700;
+    .close_btn {
+      margin-right: 15px;
+      @include middle-button-outline;
+      &:hover {
+        background-color: $light-Green-BG-color;
+      }
+    }
+    .submit_btn {
+      @include middle-button;
+    }
+  }
+}
