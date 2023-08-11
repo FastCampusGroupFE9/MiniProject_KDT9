@@ -55,7 +55,7 @@ export const getSilentAxios = (token: string): AxiosInstance => {
 export const getNewAccessToken = async (): Promise<string> => {
   try {
     const response = await ApiHttp.post(
-      "/api/token",
+      "https://leeyongsoo-calendar--hmteresting.netlify.app/api/token",
       {},
       {
         headers: {
@@ -75,7 +75,7 @@ export const getNewAccessToken = async (): Promise<string> => {
 // ADMIN_PAGE
 export const getListAll = async (): Promise<any> => {
   try {
-    const res = await ApiHttp.get("/api/admin");
+    const res = await ApiHttp.get("https://leeyongsoo-calendar--hmteresting.netlify.app/api/admin");
     return res.data;
   } catch (error) {
     console.log("getListAllAPI-Error:", error);
@@ -86,7 +86,7 @@ export const getListAll = async (): Promise<any> => {
 export const permission = async (item: { id: number }): Promise<any> => {
   try {
     const res = await ApiHttp.post(
-      "/api/admin/apply",
+      "https://leeyongsoo-calendar--hmteresting.netlify.app/api/admin/apply",
       { id: item.id },
       {
         headers: {
@@ -105,7 +105,7 @@ export const permission = async (item: { id: number }): Promise<any> => {
 // GET_MY_PAGE
 export const getMyPage = async (): Promise<any> => {
   try {
-    const res = await ApiHttp.get("/api/user");
+    const res = await ApiHttp.get("https://leeyongsoo-calendar--hmteresting.netlify.app/api/user");
     return res.data;
   } catch (error) {
     const ACCESSTOKEN = getAccessToken();
@@ -155,7 +155,7 @@ export const signUp = async (
 ): Promise<any> => {
 // eslint-disable-next-line no-useless-catch
   try {
-    const response = await ApiLogin.post("/api/register", {
+    const response = await ApiLogin.post("https://leeyongsoo-calendar--hmteresting.netlify.app/api/register", {
       email,
       password,
       name,
@@ -170,7 +170,7 @@ export const signUp = async (
 // GET_MAIN_PAGE
 export const getMainPage = async (token: string): Promise<any> => {
   try {
-    const response = await ApiHttp.get("/api/main", {
+    const response = await ApiHttp.get("https://leeyongsoo-calendar--hmteresting.netlify.app/api/main", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -179,7 +179,7 @@ export const getMainPage = async (token: string): Promise<any> => {
   } catch (error) {
     const ACCESSTOKEN = getAccessToken();
     const silentAxios = getSilentAxios(ACCESSTOKEN ?? "");
-    const result = await silentAxios.get("/api/main");
+    const result = await silentAxios.get("https://leeyongsoo-calendar--hmteresting.netlify.app/api/main");
     return result.data; // Assuming result is an AxiosResponse object
   }
 };
@@ -192,7 +192,7 @@ export const postMain = async (
   startDate: string,
 ): Promise<any> => {
   try {
-    const response = await ApiHttp.post("/api/annual", {
+    const response = await ApiHttp.post("https://leeyongsoo-calendar--hmteresting.netlify.app/api/annual", {
       title,
       category,
       endDate,
@@ -232,7 +232,7 @@ export async function postUpdate(data: UpdateType): Promise<any> {
 
 export async function postDelete(id: number): Promise<any> {
   try {
-    const response = await ApiHttp.post("/api/annual/cancel", { id });
+    const response = await ApiHttp.post("https://leeyongsoo-calendar--hmteresting.netlify.app/api/annual/cancel", { id });
     console.log("삭제 완료", response.status);
     alert("삭제 완료");
     return response.status;
