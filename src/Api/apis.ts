@@ -151,7 +151,7 @@ export const signUp = async (
   join: string,
 ): Promise<any> => {
   try {
-    const response = await ApiHttp.post(`${PROXY}/api/signup`, // 프록시로 변경
+    const response = await ApiHttp.post("/api/signup", // 프록시로 변경
       {      
         email,
         password,
