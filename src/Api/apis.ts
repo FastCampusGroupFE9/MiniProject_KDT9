@@ -14,7 +14,7 @@ const ACCESSTOKEN = getAccessToken();
 export const ApiHttp: AxiosInstance = axios.create({
   baseURL: `${PROXY}`,
   headers: {
-    Authorization: `Bearer ${ACCESSTOKEN.accessToken}`,
+    Authorization: `Bearer ${ACCESSTOKEN}`,
   },
 });
 
@@ -27,7 +27,7 @@ export const getSilentAxios = (ACCESSTOKEN: string): AxiosInstance => {
   const silentAxios: AxiosInstance = axios.create({
     baseURL: `${PROXY}`,
     headers: {
-      Authorization: `Bearer ${ACCESSTOKEN.accessToken}`,
+      Authorization: `Bearer ${ACCESSTOKEN}`,
     },
   });
   silentAxios.interceptors.response.use(
@@ -168,7 +168,7 @@ export const signUp = async (
 };
 
 // GET_MAIN_PAGE
-export const getMainPage = async (ACCESSTOKEN: string): Promise<any> => {
+export const getMainPage = async (): Promise<any> => {
   try {
     const response = await ApiHttp.get("/api/main", {
     });
