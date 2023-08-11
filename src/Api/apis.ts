@@ -1,9 +1,16 @@
+
+
+
+
+
+
+
 import axios, { AxiosInstance } from "axios";
 import { Cookies } from "react-cookie";
 import { UpdateType } from "types/common";
 
 
-
+const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
 export const getAccessToken = (): string | undefined => {
   const cookie = new Cookies();
   return cookie.get("accessToken");
@@ -12,22 +19,22 @@ export const getAccessToken = (): string | undefined => {
 
 const ACCESSTOKEN = getAccessToken();
 export const ApiHttp: AxiosInstance = axios.create({
-  baseURL: "/mini",
+  baseURL: `${PROXY}`,
   headers: {
     Authorization: `Bearer ${ACCESSTOKEN}`,
   },
 });
 
 export const ApiLogin: AxiosInstance = axios.create({
-  baseURL: "/mini",
+  baseURL: `${PROXY}`,
 });
 
 // 재요청 인스턴스
-export const getSilentAxios = (token: string): AxiosInstance => {
+export const getSilentAxios = (ACCESSTOKEN: string): AxiosInstance => {
   const silentAxios: AxiosInstance = axios.create({
-    baseURL: "/mini",
+    baseURL: `${PROXY}`,
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${ACCESSTOKEN}`,
     },
   });
   silentAxios.interceptors.response.use(
@@ -54,16 +61,18 @@ export const getSilentAxios = (token: string): AxiosInstance => {
 // NEW_ACCESSTOKEN (리프레시 토큰 요청 => 새로운 엑세스 토큰 반환)
 export const getNewAccessToken = async (): Promise<string> => {
   try {
-    const response = await ApiHttp.post(
-      "/api/token",
-      {},
-      {
-        headers: {
-          Authorization: `Bearer ${ACCESSTOKEN}`,
-        },
-        withCredentials: true,
-      },
-    );
+const response = await ApiHttp.post(
+  "/api/token",
+  {},
+  {
+    headers: {
+      Authorization: `Bearer ${ACCESSTOKEN}`,
+    },
+    withCredentials: true,
+  }
+);
+
+    
     const newAccessToken: string = response.data;
     return newAccessToken;
   } catch (error) {
@@ -86,7 +95,7 @@ export const getListAll = async (): Promise<any> => {
 export const permission = async (item: { id: number }): Promise<any> => {
   try {
     const res = await ApiHttp.post(
-      "/api/admin/apply",
+      "api/admin/apply",
       { id: item.id },
       {
         headers: {
@@ -110,12 +119,20 @@ export const getMyPage = async (): Promise<any> => {
   } catch (error) {
     const ACCESSTOKEN = getAccessToken();
     const silentAxios = getSilentAxios(ACCESSTOKEN ?? "");
-    const result = await silentAxios.get("/api/user");
-    return result.data; // Assuming result is an AxiosResponse object
+
+    const result = await silentAxios.get("/api/user", {
+      headers: {
+        Authorization: `Bearer ${ACCESSTOKEN}`,
+      },
+      withCredentials: true,
+    });
+
+    return result.data;
   }
 };
 
-// LOG_IN
+
+
 export const login = async (email: string, password: string): Promise<any> => {
   // eslint-disable-next-line no-useless-catch
   try {
@@ -125,9 +142,23 @@ export const login = async (email: string, password: string): Promise<any> => {
         email,
         password,
       },
-      { withCredentials: true },
+      { 
+        withCredentials: true 
+      } // 올바른 위치로 이동
     );
   } catch (error) {
+    throw error;
+  }
+};
+      
+  export async function postDelete(id: number): Promise<any> {
+  try {
+    const response = await ApiHttp.post("/api/annual/cancel", { id });
+    console.log("삭제 완료", response.status);
+    alert("삭제 완료");
+    return response.status;
+  } catch (error) {
+    console.error("Error submitting event:", error);
     throw error;
   }
 };
@@ -155,12 +186,19 @@ export const signUp = async (
 ): Promise<any> => {
 // eslint-disable-next-line no-useless-catch
   try {
-    const response = await ApiLogin.post("/api/register", {
-      email,
-      password,
-      name,
-      join,
-    });
+const response = await ApiLogin.post(
+  "/api/register",
+  {
+    email,
+    password,
+    name,
+    join,
+  },
+  {
+    withCredentials: true,
+  }
+);
+
     return response.data;
   } catch (error) {
     throw error;
@@ -168,13 +206,14 @@ export const signUp = async (
 };
 
 // GET_MAIN_PAGE
-export const getMainPage = async (token: string): Promise<any> => {
+export const getMainPage = async (): Promise<any> => {
   try {
-    const response = await ApiHttp.get("/api/main", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+const response = await ApiHttp.get("/api/main", {
+  headers: {
+    Authorization: `Bearer ${ACCESSTOKEN}`,
+  },
+    withCredentials: true,
+});
     return response;
   } catch (error) {
     const ACCESSTOKEN = getAccessToken();
@@ -224,18 +263,6 @@ export async function postUpdate(data: UpdateType): Promise<any> {
     const response = await ApiHttp.post("/api/annual/update", data);
     console.log("수정 완료", response.status);
     return response.status; // Assuming response contains relevant data
-  } catch (error) {
-    console.error("Error submitting event:", error);
-    throw error;
-  }
-}
-
-export async function postDelete(id: number): Promise<any> {
-  try {
-    const response = await ApiHttp.post("/api/annual/cancel", { id });
-    console.log("삭제 완료", response.status);
-    alert("삭제 완료");
-    return response.status;
   } catch (error) {
     console.error("Error submitting event:", error);
     throw error;
