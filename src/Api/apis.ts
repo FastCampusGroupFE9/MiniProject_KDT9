@@ -138,7 +138,17 @@ export const login = async (email: string, password: string): Promise<any> => {
       {
         email,
         password,
-      }
+      }export async function postDelete(id: number): Promise<any> {
+  try {
+    const response = await ApiHttp.post("/api/annual/cancel", { id });
+    console.log("삭제 완료", response.status);
+    alert("삭제 완료");
+    return response.status;
+  } catch (error) {
+    console.error("Error submitting event:", error);
+    throw error;
+  }
+}
        withCredentials: true,
   } catch (error) {
     throw error;
