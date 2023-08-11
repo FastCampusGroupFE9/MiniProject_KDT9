@@ -12,7 +12,7 @@ export default defineConfig({
     alias: [{ find: "@", replacement: `${__dirname}/src` }],
   },
   server: {
-    host: "https://hmteresting.netlify.app",
+    host: "hmteresting.netlify.app",
     proxy: {
       "/mini": {
         target: "https://miniproject-team9.p-e.kr/",
