@@ -2,20 +2,7 @@ import axios, { AxiosInstance } from "axios";
 import { Cookies } from "react-cookie";
 import { UpdateType } from "types/common";
 
-const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
-// 해당변수는 호스트가 localhost에서 클라이언트 서버를 열면 값이 없지만 다른 호스트를 사용시에는 netlify.toml에 설정해둔
-// proxy값을 할당 받는다.
 
-//아래처럼 요청 URI앞에 변수 PROXY를 추가해준다.
- axios
-      .get(
-        `${PROXY}/kart/v1.0/users/nickname/${encodeURI(
-          nickname.current.value,
-        )}`,
-        headers,
-      )
-      .then(res => console.log(res.data))
-	  .catch(err => console.error(err))
 const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
 export const getAccessToken = (): string | undefined => {
   const cookie = new Cookies();
