@@ -4,7 +4,7 @@ import { UpdateType } from "types/common";
 
 
 const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
-export const getAccessToken = (): string => {
+export const getAccessToken = (): string | undefined => {
   const cookie = new Cookies();
   return cookie.get("accessToken");
 };
@@ -171,9 +171,6 @@ export const signUp = async (
 export const getMainPage = async (ACCESSTOKEN: string): Promise<any> => {
   try {
     const response = await ApiHttp.get("/api/main", {
-      headers: {
-        Authorization: `Bearer ${ACCESSTOKEN}`,
-      },
     });
     return response;
   } catch (error) {
