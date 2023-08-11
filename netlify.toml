@@ -1,5 +1,5 @@
 [[redirects]]
 from = "/proxy/*"
-  to = "/App.tsx"
-  status = 200
-  force = true
+to = "https://hmteresting.netlify.app/App.tsx"
+status = 200
+force = true
