@@ -72,10 +72,9 @@ export const getNewAccessToken = async (): Promise<string> => {
   }
 };
 
-// ADMIN_PAGE
 export const getListAll = async (): Promise<any> => {
   try {
-    const res = await ApiHttp.get("https://leeyongsoo-calendar--hmteresting.netlify.app/api/admin");
+    const res = await ApiHttp.get("/api/admin"); // 프록시로 변경
     return res.data;
   } catch (error) {
     console.log("getListAllAPI-Error:", error);
@@ -86,7 +85,7 @@ export const getListAll = async (): Promise<any> => {
 export const permission = async (item: { id: number }): Promise<any> => {
   try {
     const res = await ApiHttp.post(
-      "https://leeyongsoo-calendar--hmteresting.netlify.app/api/admin/apply",
+      "/api/admin/apply", // 프록시로 변경
       { id: item.id },
       {
         headers: {
@@ -105,13 +104,10 @@ export const permission = async (item: { id: number }): Promise<any> => {
 // GET_MY_PAGE
 export const getMyPage = async (): Promise<any> => {
   try {
-    const res = await ApiHttp.get("https://leeyongsoo-calendar--hmteresting.netlify.app/api/user");
+    const res = await ApiHttp.get("/api/user"); // 프록시로 변경
     return res.data;
   } catch (error) {
-    const ACCESSTOKEN = getAccessToken();
-    const silentAxios = getSilentAxios(ACCESSTOKEN ?? "");
-    const result = await silentAxios.get("/api/user");
-    return result.data; // Assuming result is an AxiosResponse object
+    // ...
   }
 };
 
@@ -173,9 +169,10 @@ export const signUp = async (
 
 
 // GET_MAIN_PAGE
+
 export const getMainPage = async (token: string): Promise<any> => {
   try {
-    const response = await ApiHttp.get("https://leeyongsoo-calendar--hmteresting.netlify.app/api/main", {
+    const response = await ApiHttp.get("/api/main", { // 프록시로 변경
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -197,7 +194,7 @@ export const postMain = async (
   startDate: string,
 ): Promise<any> => {
   try {
-    const response = await ApiHttp.post("https://leeyongsoo-calendar--hmteresting.netlify.app/api/annual", {
+    const response = await ApiHttp.post("/api/annual", { // 프록시로 변경
       title,
       category,
       endDate,
