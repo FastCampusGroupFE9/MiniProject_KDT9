@@ -14,7 +14,7 @@ const ACCESSTOKEN = getAccessToken();
 export const ApiHttp: AxiosInstance = axios.create({
   baseURL: `${PROXY}`,
   headers: {
-    Authorization: `Bearer ${ACCESSTOKEN}`,
+    Authorization: `Bearer ${ACCESSTOKEN.accessToken}`,
   },
 });
 
@@ -27,7 +27,7 @@ export const getSilentAxios = (ACCESSTOKEN: string): AxiosInstance => {
   const silentAxios: AxiosInstance = axios.create({
     baseURL: `${PROXY}`,
     headers: {
-      Authorization: `Bearer ${ACCESSTOKEN}`,
+      Authorization: `Bearer ${ACCESSTOKEN.accessToken}`,
     },
   });
   silentAxios.interceptors.response.use(
