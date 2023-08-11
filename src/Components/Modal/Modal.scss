@@ -29,9 +29,26 @@
     @include small-button;
     width: 164px;
     margin-top: 20px;
+
     &:hover {
       transform: scale(1.03);
     }
+  }
+}
+
+.modal-momo{
+  bottom: 10px;
+  width: 164px;
+  height: 40px;
+  color: #fff;
+  font-size: 18px;
+  transition: 0.1s;
+  margin: 30px auto 10px;
+  background-color: $point-color-50;
+  &:hover {
+    transform: scale(1.03);
+    background-color: blue;
+
   }
 }
 
@@ -66,32 +83,42 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   .modal-header {
     font-size: 18px;
   }
+
   .modal-title {
     label {
     }
   }
+
   .addEvent-start {
   }
+
   .addEvent-end {
   }
+
   .addEvent-reason {
   }
+
   .btn-group {
     width: 200px;
     display: flex;
     background-color: red;
     margin-top: 20px;
+
     &:hover {
       transform: scale(1.03);
     }
+
     .btn-delet {
       @include middle-button-outline;
     }
+
     .btn-edit {
       @include middle-button;
     }
   }
 }
+

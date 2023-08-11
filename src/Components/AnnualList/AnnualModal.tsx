@@ -2,17 +2,23 @@ import Modal from "@/Components/Modal/Modal.tsx";
 import { ChangeEvent, useState } from "react";
 import useDataQuery from "@/Hooks/useData-Query.tsx";
 
-export default function AnnualModal(props: { annual?: AnnualType, id:number,visivility:boolean ,setVisivility:(value:boolean)=>void }) {
+
+export default function AnnualModal(props: {
+  annual?: AnnualType,
+  id: number,
+  visivility: boolean,
+  setVisivility: (value: boolean) => void
+}) {
   const [edit, setEdit] = useState(false);
   const [title, setTitle] = useState("");
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
   const [reason, setReason] = useState("");
-
   const annual = props.annual;
   const id = props.id;
   const visivility = props.visivility;
   const setVisivility = props.setVisivility;
+  console.log(visivility);
 
   const { changeMyData, deleteMyData } = useDataQuery();
 
@@ -21,7 +27,7 @@ export default function AnnualModal(props: { annual?: AnnualType, id:number,visi
   ) => {
     e.stopPropagation();
     setEdit(true);
-    setVisivility(true)
+    // setVisivility(true);
   };
 
   const handleEdit = () => {
@@ -49,7 +55,7 @@ export default function AnnualModal(props: { annual?: AnnualType, id:number,visi
         setEdit(false);
         setVisivility(false);
       },
-      onError: (error) => {
+      onError: (error: any) => {
         console.log("수정 실패", error);
       }
     });
@@ -57,7 +63,7 @@ export default function AnnualModal(props: { annual?: AnnualType, id:number,visi
 
   const handleDelete = async () => {
     deleteMyData.mutate(id, {
-      onSuccess: (res) => {
+      onSuccess: (res: any) => {
         res.status === 200 && alert("삭제되었습니다.");
         setEdit(false);
         setVisivility(false);
@@ -139,10 +145,12 @@ export default function AnnualModal(props: { annual?: AnnualType, id:number,visi
             )
             }
           </div>
+          <div className={"btn-group"}>
             <button onClick={handleDelete}>삭 제</button>
             <button onClick={handleSubmit}>수 정</button>
+          </div>
         </div>
       </Modal>
     </>
-  )
+  );
 }

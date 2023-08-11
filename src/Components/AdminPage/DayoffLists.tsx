@@ -29,7 +29,7 @@ export default function DayoffLists({ item }: Props) {
   const handlePermissionClick = async () => {
     if (status === "결재 대기") {
       changeAdminData.mutate(item,{
-        onSuccess: (res) => {
+        onSuccess: (res:any) => {
           if (res && res.data) {
             setStatus("결재완료");
           }
