@@ -27,9 +27,7 @@ const MainCalendar = () => {
   useEffect(() => {
     const fetchMainInfo = async () => {
       try {
-        const ACCESSTOKEN: string | undefined = getAccessToken();
-
-        const mainInfo = await getMainPage(ACCESSTOKEN ?? "");
+        const mainInfo = await getMainPage();
 
         if (mainInfo?.data.annuals && Array.isArray(mainInfo.data.annuals)) {
           const processedEvents = mainInfo.data.annuals.map((annuals: any) => {
