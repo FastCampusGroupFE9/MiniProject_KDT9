@@ -3,7 +3,7 @@ import { Cookies } from "react-cookie";
 import { UpdateType } from "types/common";
 
 
-const PROXY = window.location.hostname;
+
 export const getAccessToken = (): string | undefined => {
   const cookie = new Cookies();
   return cookie.get("accessToken");
@@ -12,14 +12,14 @@ export const getAccessToken = (): string | undefined => {
 
 const ACCESSTOKEN = getAccessToken();
 export const ApiHttp: AxiosInstance = axios.create({
-  baseURL: PROXY,
+  baseURL: /mini,
   headers: {
     Authorization: `Bearer ${ACCESSTOKEN}`,
   },
 });
 
 export const ApiLogin: AxiosInstance = axios.create({
-  baseURL: PROXY,
+  baseURL: /mini,
 });
 
 // 재요청 인스턴스
