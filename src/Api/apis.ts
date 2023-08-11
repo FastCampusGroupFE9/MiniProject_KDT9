@@ -4,7 +4,7 @@ import { UpdateType } from "types/common";
 
 
 const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
-export const getAccessToken = (): string | undefined => {
+export const getAccessToken = (): string => {
   const cookie = new Cookies();
   return cookie.get("accessToken");
 };
