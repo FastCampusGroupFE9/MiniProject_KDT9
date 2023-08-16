@@ -60,7 +60,7 @@ const MainCalendar = () => {
         console.error("메인페이지 컴포넌트 에러: ", error);
         const ACCESSTOKEN: string | undefined = getAccessToken();
         const silentAxios = getSilentAxios(ACCESSTOKEN ?? "");
-        const result = await silentAxios.get("/main");
+        const result = await silentAxios.get("/api/main");
         return result.data;
       }
     };
