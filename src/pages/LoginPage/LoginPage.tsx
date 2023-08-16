@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState, useEffect  } from "react";
 import "./LoginPage.scss";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
@@ -23,14 +23,15 @@ const LoginPage: React.FC<LoginPageProps> = ({ setIsLogined }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const role = localStorage.getItem("role");
-    if (role === "일반 회원" || role === "관리자") {
+    // 페이지 로딩 시 실행될 로직
+    const userRole = localStorage.getItem("role");
+
+    if (userRole) {
+      alert("이미 로그인되어 있습니다.");
       navigate("/main");
-      window.location.reload();
-    } else {
-      navigate("/");
     }
   }, [navigate]);
+
 
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
