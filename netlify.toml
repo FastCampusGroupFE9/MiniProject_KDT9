@@ -1,5 +1,5 @@
 [[redirects]]
-from = "/api/*"
+from = "/proxy/*"
 to = "https://miniproject-team9.p-e.kr/:splat"
 status = 200
 force = true
@@ -8,3 +8,8 @@ force = true
 from = "/*"
 to = "/index.html"
 status = 200
+
+[[headers]]
+  for = "/proxy/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
