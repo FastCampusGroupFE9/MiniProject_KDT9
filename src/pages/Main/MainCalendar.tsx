@@ -27,9 +27,7 @@ const MainCalendar = () => {
   useEffect(() => {
     const fetchMainInfo = async () => {
       try {
-        const ACCESSTOKEN: string | undefined = getAccessToken();
-
-        const mainInfo = await getMainPage(ACCESSTOKEN ?? "");
+        const mainInfo = await getMainPage();
 
         if (mainInfo?.data.annuals && Array.isArray(mainInfo.data.annuals)) {
           const processedEvents = mainInfo.data.annuals.map((annuals: any) => {
@@ -62,7 +60,7 @@ const MainCalendar = () => {
         console.error("메인페이지 컴포넌트 에러: ", error);
         const ACCESSTOKEN: string | undefined = getAccessToken();
         const silentAxios = getSilentAxios(ACCESSTOKEN ?? "");
-        const result = await silentAxios.get("/main");
+        const result = await silentAxios.get("/api/main");
         return result.data;
       }
     };

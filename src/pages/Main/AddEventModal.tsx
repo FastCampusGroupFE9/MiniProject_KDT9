@@ -32,18 +32,23 @@ const AddEventModal: React.FC<AddEventModalProps> = ({
     startDate: "",
   });
 
-  const handleInputChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-  ) => {
-    const { name, value } = event.target;
+const handleInputChange = (
+  event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+) => {
+  const { name, value } = event.target;
 
-    // name이 'select-reason'인 경우, reason 값을 설정
-    if (name === "select-reason") {
-      setNewEvent((prevEvent) => ({ ...prevEvent, reason: value }));
-    } else {
-      setNewEvent((prevEvent) => ({ ...prevEvent, [name]: value }));
+  // name이 'select-reason'인 경우, reason 값을 설정
+  if (name === "select-reason") {
+    setNewEvent((prevEvent) => ({ ...prevEvent, reason: value }));
+
+    // 선택한 값이 "============= 당직 =============" 인 경우에만 알림 띄우기
+    if (value === "기타휴가") {
+      alert("당직 사유를 선택하셨습니다.");
     }
-  };
+  } else {
+    setNewEvent((prevEvent) => ({ ...prevEvent, [name]: value }));
+  }
+};
 
   const handleCategoryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;

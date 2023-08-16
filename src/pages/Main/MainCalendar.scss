@@ -235,7 +235,7 @@
 }
 
 .fc-event-main-frame:hover {
-  background-color: $black-color;
+  background-color: rgb(242, 160, 55) ;
   cursor: pointer;
   border-radius: 2px;
 }
@@ -243,7 +243,7 @@
 
 .fc-daygrid-event-harness{
   :hover{
-    background-color: black;
+    background-color: rgb(242, 160, 55) ;
     cursor: pointer;
   }
 }
@@ -258,7 +258,7 @@
   font-weight: bold;
 
   :hover{
-    background-color: black;
+    background-color: rgb(242, 160, 55);
     cursor: pointer;
   }
 
