@@ -22,15 +22,13 @@ const LoginPage: React.FC<LoginPageProps> = ({ setIsLogined }) => {
   const [ ,setCookie] = useCookies(["accessToken"]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // 페이지 로딩 시 실행될 로직
-    const userRole = localStorage.getItem("role");
-
-    if (userRole) {
-      alert("이미 로그인되어 있습니다.");
+    useEffect(() => {
+    // 이미 로그인되어 있는 경우, 메인 페이지로 리디렉션
+    if (localStorage.getItem("role") && cookies.accessToken) {
+      setIsLogined(true);
       navigate("/main");
     }
-  }, [navigate]);
+  }, [navigate, setIsLogined, cookies.accessToken]);
 
 
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
