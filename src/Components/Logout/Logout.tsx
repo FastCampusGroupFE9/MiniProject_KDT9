@@ -16,7 +16,7 @@ const Logout: React.FC = () => {
         removeCookies("accessToken");
 
         alert("로그아웃 되었습니다.");
-        navigate("/api/");
+        navigate("/");
         window.location.reload();
       }
     } catch (error: any) {
