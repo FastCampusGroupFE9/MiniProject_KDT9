@@ -21,6 +21,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ setIsLogined }) => {
   // Cookie
   const [ ,setCookie] = useCookies(["accessToken"]);
   const navigate = useNavigate();
+   const [cookies, ,] = useCookies(["accessToken"]);
 
     useEffect(() => {
     // 이미 로그인되어 있는 경우, 메인 페이지로 리디렉션
