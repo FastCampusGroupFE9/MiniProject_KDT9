@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { login } from "../../Api/apis";
 import Modal from "../../Components/Modal/Modal";
 
+
 interface LoginPageProps {
   setIsLogined: (value: boolean) => void;
 }
@@ -21,34 +22,16 @@ const LoginPage: React.FC<LoginPageProps> = ({ setIsLogined }) => {
   // Cookie
   const [ ,setCookie] = useCookies(["accessToken"]);
   const navigate = useNavigate();
-   const [cookies, ,] = useCookies(["accessToken"]);
-
-     useEffect(() => {
-    // 이미 로그인되어 있는 경우, 메인 페이지로 리디렉션
-    if (localStorage.getItem("role") && cookies.accessToken) {
-      setIsLogined(true);
-      navigate("/main");
-    }
-  }, [navigate, setIsLogined, cookies.accessToken]);
 
   useEffect(() => {
-    const handleBackButton = () => {
-      // 페이지에 뒤로가기 이벤트 리스너 추가
-      // 여기서 다시 로그인 여부를 확인하고 처리할 수 있습니다.
-      if (localStorage.getItem("role") && cookies.accessToken) {
-        setIsLogined(true);
-        navigate("/main");
-      }
-    };
+    // 페이지 로딩 시 실행될 로직
+    const userRole = localStorage.getItem("role");
 
-    // 뒤로가기 이벤트 리스너 추가
-    window.addEventListener("popstate", handleBackButton);
-
-    // 컴포넌트 언마운트 시 리스너 제거
-    return () => {
-      window.removeEventListener("popstate", handleBackButton);
-    };
-  }, [navigate, setIsLogined, cookies.accessToken]);
+    if (userRole) {
+      alert("이미 로그인되어 있습니다.");
+      navigate("/main");
+    }
+  }, [navigate]);
 
 
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
