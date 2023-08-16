@@ -27,7 +27,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ setIsLogined }) => {
     if (role === "일반 회원" || role === "관리자") {
       navigate("/api/main");
     } else {
-      navigate("/api/");
+      navigate("/");
     }
   }, [navigate]);
 
