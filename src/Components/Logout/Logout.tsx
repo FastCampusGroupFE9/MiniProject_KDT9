@@ -9,7 +9,6 @@ const Logout: React.FC = () => {
 
   const handleLogout = async (): Promise<void> => {
     try {
-      navigate("/");
 
       const res = await logOut();
       if (res) {
@@ -18,6 +17,7 @@ const Logout: React.FC = () => {
 
         alert("로그아웃 되었습니다.");
         window.location.reload();
+        navigate("/");
       }
     } catch (error: any) {
       console.error("로그아웃이 실패 하였습니다.", error);
