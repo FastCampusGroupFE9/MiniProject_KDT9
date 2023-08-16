@@ -1,5 +1,4 @@
-[[redirects]]
-from = "/proxy/*"
-to = "https://miniproject-team9.p-e.kr/:splat"
-status = 200
-force = true
+    [[redirects]]
+    from = "/*"
+    to = "/index.html"
+    status = 200
