@@ -73,6 +73,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ setIsLogined }) => {
           setCookie("accessToken", accessToken);
           setIsLogined(true);
           navigate("/main");
+          window.location.reload();
         }
       }
     } catch (error) {
