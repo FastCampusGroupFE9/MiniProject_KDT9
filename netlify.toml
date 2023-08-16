@@ -10,6 +10,6 @@ to = "/index.html"
 status = 200
 
 [[headers]]
-  for = "/proxy/*"
-  [headers.values]
-    Access-Control-Allow-Origin = "*"
+for = "/proxy/*"
+[headers.values]
+Access-Control-Allow-Origin = "*"
