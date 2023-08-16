@@ -23,12 +23,31 @@ const LoginPage: React.FC<LoginPageProps> = ({ setIsLogined }) => {
   const navigate = useNavigate();
    const [cookies, ,] = useCookies(["accessToken"]);
 
-    useEffect(() => {
+     useEffect(() => {
     // 이미 로그인되어 있는 경우, 메인 페이지로 리디렉션
     if (localStorage.getItem("role") && cookies.accessToken) {
       setIsLogined(true);
       navigate("/main");
     }
+  }, [navigate, setIsLogined, cookies.accessToken]);
+
+  useEffect(() => {
+    const handleBackButton = () => {
+      // 페이지에 뒤로가기 이벤트 리스너 추가
+      // 여기서 다시 로그인 여부를 확인하고 처리할 수 있습니다.
+      if (localStorage.getItem("role") && cookies.accessToken) {
+        setIsLogined(true);
+        navigate("/main");
+      }
+    };
+
+    // 뒤로가기 이벤트 리스너 추가
+    window.addEventListener("popstate", handleBackButton);
+
+    // 컴포넌트 언마운트 시 리스너 제거
+    return () => {
+      window.removeEventListener("popstate", handleBackButton);
+    };
   }, [navigate, setIsLogined, cookies.accessToken]);
 
 
